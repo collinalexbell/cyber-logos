@@ -5,7 +5,7 @@
 (in-package :logos)
 
 (defclass logos ()
-  ;; A quanta of being/becomming/pattern. See kuberlog/holon.
+  ;; A quanta of being/becomming/pattern.
   ((name :initarg :name)
    (inferior-logoss :initform '()
 		    :initarg :inferior-logoss
