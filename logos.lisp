@@ -22,7 +22,6 @@
   (make-instance 'logos))
 
 (defun cascade (logos fn)
-  ;; call fn on the entire inferior-logoss tree
   ;; WARNING: this will blow the stack w/ cyclic graphs
   (funcall fn logos)
   (loop for logos in (slot-value logos 'inferior-holons)
@@ -44,7 +43,7 @@
     rv))
 
 (defmethod renew ((logos logos))
-  (format t "An abstract logos is like a mathematical point.~%Therefore, there is nothing to it, so it can't be renewed"))
+  (format t "No method found"))
 
 (defmethod disolve ((logos logos))
   (setf (slot-value logos 'state) 'disolved))
