@@ -16,6 +16,5 @@
 *.wx64fsl
 *.wx32fsl
 holon/
-task/
 repos/
 inventions/
