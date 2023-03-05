@@ -1,6 +1,6 @@
 (defpackage :logos
   (:use :cl)
-  (:export :logos :inferior-logss :link))
+  (:export :logos :inferior-logoss :link))
 
 (in-package :logos)
 

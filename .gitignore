@@ -15,6 +15,7 @@
 *.sx32fsl
 *.wx64fsl
 *.wx32fsl
-./holon/
-./task/
-./repos/
+holon/
+task/
+repos/
+inventions/
