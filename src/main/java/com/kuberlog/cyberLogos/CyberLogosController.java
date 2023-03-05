@@ -3,7 +3,7 @@ package com.kuberlog.cyberLogos;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class CyberLogosController {
     @FXML
     private Label welcomeText;
 
