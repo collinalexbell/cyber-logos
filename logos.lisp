@@ -1,8 +1,8 @@
-(defpackage :logos
+(defpackage :cyber-logos
   (:use :cl)
   (:export :logos :inferior-logoss :link))
 
-(in-package :logos)
+(in-package :cyber-logos)
 
 (defclass logos ()
   ;; A quanta of being/becomming/pattern.
@@ -27,8 +27,6 @@
   (loop for logos in (slot-value logos 'inferior-holons)
 	do (cascade logos fn)))
 
-(defun shake (logos)
-  (cascade logos #'renew))
 
 (defgeneric renew (logos))
 
@@ -44,6 +42,9 @@
 
 (defmethod renew ((logos logos))
   (format t "No method found"))
+
+(defun shake (logos)
+  (cascade logos #'renew))
 
 (defmethod disolve ((logos logos))
   (setf (slot-value logos 'state) 'disolved))
