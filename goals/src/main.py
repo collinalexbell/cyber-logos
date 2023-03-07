@@ -1,5 +1,3 @@
-import datetime
-
 import gi
 
 from gui import GoalsWindow

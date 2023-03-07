@@ -5,7 +5,6 @@ from gi.repository import Gtk
 
 from add_goal_widget import AddGoalWidget
 from manage_existing_goals_widget import ManageExistingGoalsWidget
-from objective_widget import ObjectiveWidget
 
 class GoalsWindow(Gtk.Window):
     def __init__(self, repo):
@@ -15,10 +14,11 @@ class GoalsWindow(Gtk.Window):
         Gtk.Window.__init__(self, title="Goals")
         self.connect("destroy", Gtk.main_quit)
 
-        self.main_box = Gtk.HBox()
+        self.main_box = Gtk.HBox(True)
         self.notes_frame = Gtk.Frame(label="Notes")
         self.notes_window = Gtk.ScrolledWindow()
         self.notes_text = Gtk.TextView()
+
         self.notes_text.get_buffer().connect("changed", self.update_notes)
         self.notes_window.add(self.notes_text)
         self.goal_box = Gtk.VBox()
@@ -26,23 +26,7 @@ class GoalsWindow(Gtk.Window):
         self.main_box.add(self.goal_box)
         self.notes_frame.add(self.notes_window)
         self.main_box.add(self.notes_frame)
-
-        self.objectives_widget = ObjectiveWidget(
-            [
-            "Determination",
-            "Cybernetics",
-            "Business",
-            "Finance",
-            "Health",
-            "Lifestyle",
-            "Politics",
-            "Reading",
-            "Social"
-            ], 
-            self.select_objective_callback)
-        self.goal_box.add(self.objectives_widget)
-
-        self.manage_existing_goals_widget = ManageExistingGoalsWidget(self.delete_goal_callback, self.select_goal_callback)
+        self.manage_existing_goals_widget = ManageExistingGoalsWidget(self.delete_goal_callback, self.select_goal_callback, self.deselect_goal_callback)
         for goal in self.goals_from_repo:
             self.manage_existing_goals_widget.add_to_goal_list(goal)
         self.goal_box.add(self.manage_existing_goals_widget)
@@ -52,8 +36,6 @@ class GoalsWindow(Gtk.Window):
 
         self.show_all()
 
-    def select_objective_callback(self):
-        pass
 
     def select_goal_callback(self,list_box,list_box_row):
         selected_goal = self.manage_existing_goals_widget.get_selected_goal()
@@ -66,6 +48,10 @@ class GoalsWindow(Gtk.Window):
                 buffer.set_text("")
         else:
             buffer.set_text("")
+
+    def deselect_goal_callback(self):
+        buffer = self.notes_text.get_buffer()
+        buffer.set_text("")
 
     def update_notes(self, buffer):
         selected_goal = self.manage_existing_goals_widget.get_selected_goal()
@@ -80,8 +66,6 @@ class GoalsWindow(Gtk.Window):
         self.show_all()
         self.goals_repo.save(goal)
 
-    def delete_goal_callback(self, btn):
+    def delete_goal_callback(self):
         goal = self.manage_existing_goals_widget.get_selected_goal()
         self.goals_repo.delete(goal)
-
-        self.manage_existing_goals_widget.delete_selected_goal()
