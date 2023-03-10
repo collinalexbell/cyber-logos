@@ -46,7 +46,6 @@
                       pass
                       url)))
 
-
 (defun read-goal-from-json (json-string)
   (let ((json-object (json:decode-json-from-string json-string)))
 
@@ -55,7 +54,6 @@
                    :name (cdr (assoc :name json-object))
                    :deadline (cdr (assoc :deadline json-object))
                    :notes (cdr (assoc :notes json-object)))))
-
 
 (defun write-goal-to-postgres (goal)
   (let ((id (slot-value goal 'logos.goal:id))
