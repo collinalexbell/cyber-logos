@@ -1,0 +1,7 @@
+# symbolic-non-linear-ai
+
+Lisp may become a more dominant player now that OpenAI exists.
+
+A common lisp AI built off such a language model could use a
+macro expander that translates symbols into code using OpenAI
+
