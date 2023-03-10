@@ -49,6 +49,7 @@ class Repo:
         self.db = client.holon.goals
 
     def get_all(self):
+        # returns all goals of type Goal
         docs = self.db.find()
         rv = []
         for doc in docs:
@@ -73,3 +74,9 @@ class Repo:
 
 
 
+
+class PostgresRepo:
+    def init_postgres_client(self):
+        pass
+    def __init__(self):
+        self.init_postgres_client()
