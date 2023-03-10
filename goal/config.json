@@ -1,0 +1,6 @@
+{
+    "dbname":"logos",
+    "dbuser":"kuberlog",
+    "dbpass":"",
+    "dburl":"localhost"
+}
