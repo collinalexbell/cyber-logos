@@ -16,3 +16,8 @@ cyber-logos
 - logos
 - logos.task
 - logos.goal
+
+## config.json
+This is an example config.
+It is used to connect to the db.
+Don't expose a service running with this config to the web
