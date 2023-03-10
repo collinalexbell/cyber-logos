@@ -1,8 +1,8 @@
-(defpackage :cyber-logos
+(defpackage :logos
   (:use :cl)
-  (:export :logos :inferior-logoss :link))
+  (:export :logos :inferior-logoss :superior-logoss :link))
 
-(in-package :cyber-logos)
+(in-package :logos)
 
 (defclass logos ()
   ;; A quanta of being/becomming/pattern.
@@ -17,6 +17,10 @@
                     :initarg :parellel-logoss
                     :accessor parallel-logoss)
    (state :initform 'intact)))
+
+; in order to make a list a subclass of logos,
+; I would need to abstract the accessors inferior/superior-logos
+; so I can implement them for lists
 
 (defun logos ()
   (make-instance 'logos))
