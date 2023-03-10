@@ -41,7 +41,7 @@
 
 (defun read-goal-from-json (json-string)
   (let ((json-object (json:decode-json-from-string json-string)))
-    
+
     (make-instance 'goal
                    :id (cdr (assoc 'id json-object))
                    :name (cdr (assoc 'name json-object))
