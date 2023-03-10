@@ -9,6 +9,10 @@
 
 (in-package :logos.goal.repo)
 
+(defun init-db ()
+  (postmodern:execute "CREATE TABLE goal (id varchar(255), name text, deadline text, notes text)")
+  )
+
 (defun config-dbname
     (config)
   (cdr (assoc :dbname (json:decode-json-from-string config))))
@@ -47,16 +51,14 @@
   (let ((json-object (json:decode-json-from-string json-string)))
 
     (make-instance 'goal
-                   :id (cdr (assoc 'id json-object))
-                   :name (cdr (assoc 'name json-object))
-                   :deadline (cdr (assoc 'deadline json-object))
-                   :notes (cdr (assoc 'notes json-object)))))
+                   :id (cdr (assoc :id json-object))
+                   :name (cdr (assoc :name json-object))
+                   :deadline (cdr (assoc :deadline json-object))
+                   :notes (cdr (assoc :notes json-object)))))
 
 
 (defun write-goal-to-postgres (goal)
   (let ((id (slot-value goal 'logos.goal:id))
         (name (slot-value goal 'logos.goal:name))
-        (deadline (slot-value goal 'logos.goal:deadline))
-        (notes (slot-value goal 'logos.goal:notes)))
-    (postmodern:execute "INSERT INTO goals (id, name, deadline, notes) VALUES ($1, $2, $3, $4)"
-                        (list id name deadline notes))))
+        (deadline (slot-value goal 'logos.goal:deadline)))
+    (postmodern:query (:insert-into 'goal :set 'id id 'name name 'deadline deadline))))
