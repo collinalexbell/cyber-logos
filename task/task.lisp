@@ -1,5 +1,6 @@
 (in-package :logos.task)
 (defclass task (logos)
+  ; A task is something you do
   ((description :accessor task-description
 		:initarg :description)
    (priority :accessor task-priority

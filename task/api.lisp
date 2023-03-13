@@ -46,8 +46,8 @@
   (unless (null *selected-task*) (complete))
   (select))
 
-(defun tasks ()
-  (print-all-task-info))
+(defun tasks (&rest options)
+  (print-all-task-info (mapcar #'(lambda (option) (list option)) options)))
 
 (defun groups ()
   (print-current-groups))

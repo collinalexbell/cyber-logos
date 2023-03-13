@@ -5,7 +5,9 @@
 
 (defpackage :logos.task
   (:use :cl :postmodern :logos)
-  (:export :select :complete :deselect :add-task :tasks :*selected-task*))
+  (:export
+   :task :select :complete :deselect
+   :add-task :tasks :*selected-task*))
 
 (require :parachute)
 (in-package :logos.task)
