@@ -10,4 +10,6 @@
                "inferior-shell")
   :components ((:file "logos")
                (:file "task/init")
-               (:file "virtue")))
+               (:file "virtue")
+               (:file "human")
+               (:file "I")))
