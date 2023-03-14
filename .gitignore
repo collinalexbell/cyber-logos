@@ -25,3 +25,4 @@ db/
 **/task-log
 logfile
 goals-py/goals.json
+current.task-list
