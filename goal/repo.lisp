@@ -46,6 +46,10 @@
                       pass
                       url)))
 
+(defun read-goals-file ()
+  (with-open-file (f "goals-py/goals.json")
+    (apply #'concatenate 'string (uiop:read-file-lines f))))
+
 (defun read-goal-from-json (json-string)
   (let ((json-object (json:decode-json-from-string json-string)))
 
