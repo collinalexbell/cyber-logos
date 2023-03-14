@@ -19,6 +19,9 @@ module floor_decor() {
   }
 }
 module floors() {
+  translate([wall_thickness,0, h_bottom+h_top-1.8]) cube([cathedral_width,depth,.4]);
+  translate([0,0,h_bottom+h_top-1.8]) floor_decor();
+  cube([wall_thickness + cathedral_width,depth,.4]);
   translate([wall_thickness,0, h_bottom]) cube([cathedral_width,depth,.4]);
   translate([0,0,h_bottom]) floor_decor();
   cube([wall_thickness + cathedral_width,depth,.4]);
