@@ -28,6 +28,16 @@ class Goal:
     def update_notes(self, notes):
         self.notes = notes
 
+    def to_json(self):
+        json = "{"
+        json += "\"name\":\"" + self.name + "\","
+        json += "\"id\":\"" + str(self.id) + "\","
+        json += "\"notes\":\"" + str(self.notes) + "\","
+        json += "\"deadline\":\"" + str(self.deadline) + "\""
+        json += "}"
+        return json
+
+
 
 class Repo:
     @classmethod
