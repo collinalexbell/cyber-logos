@@ -1,7 +1,6 @@
 (in-package :logos.task)
 
 (defun print-all-task-info (options)
-  (format t "print-all-task-info ~a~%" options)
   (let ((show-task-menu (assoc :show-menu options)))
     (print-current-task *selected-task*)
     (print-task-list nil)
