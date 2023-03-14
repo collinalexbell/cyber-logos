@@ -21,4 +21,4 @@ inventions/
 **/log
 db/
 **/*.backup
-**/*.DS_STORE
+**/.DS_STORE
