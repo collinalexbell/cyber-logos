@@ -22,3 +22,4 @@ inventions/
 db/
 **/*.backup
 **/.DS_STORE
+**/task-log
