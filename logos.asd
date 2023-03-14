@@ -9,4 +9,5 @@
                "cl-store"
                "inferior-shell")
   :components ((:file "logos")
-               (:file "task/init")))
+               (:file "task/init")
+               (:file "virtue")))
