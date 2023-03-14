@@ -18,3 +18,6 @@
 holon/
 repos/
 inventions/
+**/log
+db/
+**/*.backup
