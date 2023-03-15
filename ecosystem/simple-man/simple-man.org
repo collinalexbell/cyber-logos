@@ -1,0 +1,13 @@
+* Simple Man
+A very simple Robot
+
+** Components
+*** 2 wheels
+*** 2 DC motors
+*** 2 hbridges
+*** 2 battery
+*** raspberry pi
+*** 3d printable frame
+
+** design
+A simple rectangle with a gliding bump and 2 wheels at the back

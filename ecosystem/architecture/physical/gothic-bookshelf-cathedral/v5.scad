@@ -46,8 +46,8 @@ translate([cathedral_width + wall_thickness ,0,0])
 //     Motor Housing
 //
 
-housing_height = 5;
-hole_height = 2.4;
+housing_height = 6;
+hole_height = 2.5;
 difference() {
 translate([0,0, -housing_height]) cube([cathedral_width + wall_thickness * 2 ,depth, housing_height]);
 translate([wall_thickness,1, -housing_height-1]) cube([cathedral_width,depth, housing_height]);
