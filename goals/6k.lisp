@@ -13,7 +13,7 @@
 
 (defun 6k ()
   (run-a-cyberlogos (twice daily)
-          (look at the goal twice daily)
+          (look at the goal)
           (visualize in depth vr visualization)
           (stream the processess)
-          (do it in a park)))
+          (maybe do it in a park)))
