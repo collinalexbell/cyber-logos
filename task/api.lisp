@@ -44,7 +44,7 @@
 
 (defun next ()
   (unless (or (eq *selected-task* *root-task*) (null *selected-task*)) (complete))
-  (unless (null (inferior-logoss *selected-task*)) (select))))
+  (unless (null (inferior-logoss *selected-task*)) (select)))
 
 (defun tasks (&rest options)
   (print-all-task-info (mapcar #'(lambda (option) (list option)) options)))
