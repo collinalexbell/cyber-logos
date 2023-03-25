@@ -1,10 +1,12 @@
-(defpackage :holon.ecosystem)
-(in-package :holon.ecosystem)
+(defpackage :logos.ecosystem (:use :cl))
+(in-package :logos.ecosystem)
+(load "./ecosystem/shot-sentry")
 
+(defvar dev-shot-sentry (shotsentry))
 
-(defun holon-ecosystem ()
+(defun logos-ecosystem ()
   '((code . (
-             (holon . ((url . "https://github.com/kuberlog/holon")))
+             (logos . ((url . "https://github.com/kuberlog/cyber-logos")))
              (text . ((url . "https://github.com/kuberlog/text")
                       (description . "a simple text editor")
                       (usefulness-to-ecosystem . ("learning project"
@@ -22,3 +24,5 @@
                 )))
     (other-distributables . (
                              (borgs . "The cyborg game")))))
+
+
