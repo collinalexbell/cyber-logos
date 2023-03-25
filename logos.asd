@@ -9,7 +9,9 @@
                "cl-store"
                "inferior-shell")
   :components ((:file "logos")
+               (:file "alias")
                (:file "task/init")
                (:file "virtue")
                (:file "human")
-               (:file "I")))
+               (:file "I")
+               (:file "cyber-logos")))
