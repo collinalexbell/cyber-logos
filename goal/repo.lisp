@@ -2,8 +2,6 @@
 (ql:quickload :cl-json)
 (ql:quickload :cl-ppcre)
 
-(load "./goal.lisp")
-
 (defpackage :logos.goal.repo
   (:use :cl :postmodern :logos.goal :cl-json :uiop))
 
@@ -50,17 +48,25 @@
   (with-open-file (f "goals-py/goals.json")
     (apply #'concatenate 'string (uiop:read-file-lines f))))
 
-(defun read-goal-from-json (json-string)
-  (let ((json-object (json:decode-json-from-string json-string)))
 
-    (make-instance 'goal
-                   :id (cdr (assoc :id json-object))
-                   :name (cdr (assoc :name json-object))
-                   :deadline (cdr (assoc :deadline json-object))
-                   :notes (cdr (assoc :notes json-object)))))
+
+(defun read-goals-from-json (json-string)
+  (let ((json-objects (json:decode-json-from-string json-string)))
+    (loop for json-object in json-objects collect
+      (make-instance 'goal
+                    :id (cdr (assoc :id json-object))
+                    :name (cdr (assoc :name json-object))
+                    :deadline (cdr (assoc :deadline json-object))
+                    :notes (cdr (assoc :notes json-object))))))
 
 (defun write-goal-to-postgres (goal)
   (let ((id (slot-value goal 'logos.goal:id))
         (name (slot-value goal 'logos.goal:name))
-        (deadline (slot-value goal 'logos.goal:deadline)))
-    (postmodern:query (:insert-into 'goal :set 'id id 'name name 'deadline deadline))))
+        (deadline (slot-value goal 'logos.goal:deadline))
+        (notes (slot-value goal 'logos.goal:notes)))
+    (postmodern:query (:insert-into 'goal :set 'id id 'name name 'deadline deadline 'notes notes))))
+
+(defun load-backup-goals-into-postgres ()
+  (loop for goal in (read-goals-from-json (read-goals-file)) do (write-goal-to-postgres goal)))
+
+
