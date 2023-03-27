@@ -70,3 +70,12 @@
   (loop for goal in (read-goals-from-json (read-goals-file)) do (write-goal-to-postgres goal)))
 
 
+(defun interleave (l1 l2)
+  (concatenate 'list
+               (list (car l1) (car l2))
+               (interleave (cdr l1) (cdr l2))))
+
+(defun all-from-postgres ()
+  (for goal-list in (postmodern:query "select * from goal") collect
+       (apply make-instance 'goal
+              (interleave '(:id :name :deadline :notes) goal-list))))
