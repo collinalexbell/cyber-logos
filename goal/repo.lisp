@@ -71,11 +71,28 @@
 
 
 (defun interleave (l1 l2)
-  (concatenate 'list
-               (list (car l1) (car l2))
-               (interleave (cdr l1) (cdr l2))))
+  (if (not (null l1))
+   (concatenate 'list
+                (list (car l1) (car l2))
+                (interleave (cdr l1) (cdr l2)))
+   '()))
 
 (defun all-from-postgres ()
-  (for goal-list in (postmodern:query "select * from goal") collect
-       (apply make-instance 'goal
-              (interleave '(:id :name :deadline :notes) goal-list))))
+  (defvar goals
+   (loop for goal-list
+           in (postmodern:query
+               "select * from goal")
+         collect
+         (interleave
+          '(:id :name :deadline :notes)
+          goal-list))))
+
+(defun find-goal (field text)
+  (if (not (null goals))
+      (find-if
+       #'(lambda (goal)
+           (search
+            text
+            (slot-value goal field)))
+       goals)
+      '()))
