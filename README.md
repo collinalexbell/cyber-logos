@@ -1,5 +1,5 @@
 # cyber-logos
-kuberlog's Logos de Holon
+
 
 ## What is cyber-logos
 
@@ -10,7 +10,7 @@ cyber-logos
         (by
             tracking it,
             modeling it,
-            building it's holon).
+            building it's [holon](https://en.wikipedia.org/wiki/Holon)).
 
 ### packages
 - logos
