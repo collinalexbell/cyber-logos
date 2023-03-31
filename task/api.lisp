@@ -3,6 +3,7 @@
 (setf (fdefinition 'add) #'add-task)
 (setf (fdefinition 'a) #'add-task)
 
+
 (defun complete ()
   (when (or (null (subtasks *selected-task*))
 	    (yes-no "This task has subtasks.~%Do you wish to complete it?"))
@@ -12,6 +13,8 @@
 	      (task-selected-duration selected-task))))
   (redisplay)
   (backup *root-task*))
+
+(setf (fdefinition 'c) #'complete)
 
 (defun delete-selected ()
   (delete-task *selected-task*)
