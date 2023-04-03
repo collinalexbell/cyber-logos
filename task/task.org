@@ -11,3 +11,5 @@
        - complete
 ** A webapp that provides a REPL to the entire logos system
 ** A new backend DB and a query app.
+** Select multiple tasks at once
+** Keep running log of XP in some counter or set of counters
