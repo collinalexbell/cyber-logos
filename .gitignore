@@ -19,7 +19,6 @@ holon/
 repos/
 inventions/
 **/log
-db/
 **/*.backup
 **/.DS_STORE
 **/task-log
