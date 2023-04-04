@@ -9,7 +9,7 @@
 (in-package :logos.db.postgres)
 
 (defun config-dbname
-    (config
+    (config)
   (cdr (assoc :dbname (json:decode-json-from-string config))))
 
 (defun config-dbuser

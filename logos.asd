@@ -7,11 +7,13 @@
   :depends-on ("parachute"
                "postmodern"
                "cl-store"
-               "inferior-shell")
+               "inferior-shell"
+               "cl-json")
   :components ((:file "logos")
                (:file "alias")
                (:file "task/init")
                (:file "virtue")
                (:file "human")
                (:file "I")
-               (:file "cyber-logos")))
+               (:file "cyber-logos")
+               (:file "db/postgres")))
