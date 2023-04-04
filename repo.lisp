@@ -8,4 +8,7 @@
    (goals :initform '() :initarg :goals)
 
    ;; actions to take
-   (tasks :initform '() :initarg :tasks)))
+   (tasks :initform '() :initarg :tasks)
+
+   ;; the substance of the project
+   (artifacts :initform '())))
