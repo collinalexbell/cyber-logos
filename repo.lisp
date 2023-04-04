@@ -1,8 +1,11 @@
 (defpackage :logos.repo (:use :cl))
 (in-package :logos.repo)
 
-(defclass repo (logos)
-  ((remotes :initform '() :initarg :remotes)
-   (tasks :initform '() :initarg :tasks)))
+(defclass project (logos)
+  ((name :initform (error "name is required") :initarg :name)
 
-()
+   ;; states to aim for
+   (goals :initform '() :initarg :goals)
+
+   ;; actions to take
+   (tasks :initform '() :initarg :tasks)))
