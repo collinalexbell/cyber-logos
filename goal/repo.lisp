@@ -15,8 +15,6 @@
   (with-open-file (f "goals-py/goals.json")
     (apply #'concatenate 'string (uiop:read-file-lines f))))
 
-
-
 (defun read-goals-from-json (json-string)
   (let ((json-objects (json:decode-json-from-string json-string)))
     (loop for json-object in json-objects collect
@@ -25,6 +23,7 @@
                     :name (cdr (assoc :name json-object))
                     :deadline (cdr (assoc :deadline json-object))
                     :notes (cdr (assoc :notes json-object))))))
+
 
 (defun write-goal-to-postgres (goal)
   (let ((id (slot-value goal 'logos.goal:id))
@@ -35,7 +34,6 @@
 
 (defun load-backup-goals-into-postgres ()
   (loop for goal in (read-goals-from-json (read-goals-file)) do (write-goal-to-postgres goal)))
-
 
 (defun interleave (l1 l2)
   (if (not (null l1))
