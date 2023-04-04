@@ -11,39 +11,6 @@
   (postmodern:execute "CREATE TABLE goal (id varchar(255), name text, deadline text, notes text)")
   )
 
-(defun config-dbname
-    (config)
-  (cdr (assoc :dbname (json:decode-json-from-string config))))
-
-(defun config-dbuser
-    (config)
-  (cdr (assoc :dbuser (json:decode-json-from-string config))))
-
-(defun config-dbpass
-    (config)
-  (cdr (assoc :dbpass (json:decode-json-from-string config))))
-
-(defun config-dburl
-    (config)
-  (cdr (assoc :dburl (json:decode-json-from-string config))))
-
-(defun connect-with-config ()
-  (let* ((config (apply #'concatenate 'string (uiop:read-file-lines "./goal/config.json")))
-         (dbname
-           (config-dbname config))
-         (user
-           (config-dbuser config))
-         (pass
-           (config-dbpass config))
-         (url
-           (config-dburl config)))
-
-
-    (connect-toplevel dbname
-                      user
-                      pass
-                      url)))
-
 (defun read-goals-file ()
   (with-open-file (f "goals-py/goals.json")
     (apply #'concatenate 'string (uiop:read-file-lines f))))
