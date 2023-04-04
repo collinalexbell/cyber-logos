@@ -28,3 +28,4 @@ goals-py/goals.json
 current.task-list
 **/*.stl
 **/*.gcode
+**/*.logos
