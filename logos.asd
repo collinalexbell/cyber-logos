@@ -9,7 +9,8 @@
                "cl-store"
                "inferior-shell"
                "cl-json")
-  :components ((:file "logos")
+  :components ((:file "kuberlisp")
+               (:file "logos")
                (:file "alias")
                (:file "task/init")
                (:file "virtue")

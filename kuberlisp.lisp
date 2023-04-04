@@ -1,5 +1,11 @@
-(defpackage :kl (:use :cl))
-(in-package :logos)
+(defmacro defkl ()
+  `(defpackage :kl (:use :cl)
+               (:export
+                ,@(let (symbols)
+                    (do-external-symbols (s (find-package :cl))
+                      (push s symbols))
+                    symbols))))
+(defkl)
 
 
 ;;; Utility fns

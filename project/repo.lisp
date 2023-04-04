@@ -1,5 +1,5 @@
 (defpackage :logos.project.repo
-  (:use :cl :postmodern))
+  (:use :kl :postmodern))
 (in-package :logos.project.repo)
 
 (defun init-db ()

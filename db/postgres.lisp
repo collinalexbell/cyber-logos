@@ -17,8 +17,7 @@
   (cdr (assoc :dbuser (json:decode-json-from-string config))))
 
 (defun config-dbpass
-    (config)
-  (cdr (assoc :dbpass (json:decode-json-from-string config))))
+    (config) (cdr (assoc :dbpass (json:decode-json-from-string config))))
 
 (defun config-dburl
     (config)
