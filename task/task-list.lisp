@@ -130,7 +130,7 @@
     (true (= 0 (length (inferior-logoss *selected-task*))))))
 
 
-(defun filter-tasks-by-group (l g)
+(defun filter-tasks-by-group (&optional (l (inferior-logoss *selected-task*)) (g nil))
   (remove-if-not (lambda (t-d)
                    (find g (task-groups t-d)))
                  l))

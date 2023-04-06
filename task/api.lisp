@@ -1,5 +1,7 @@
 (in-package :logos.task)
 
+
+
 (progn
   (defun complete ()
    (when (or (null (subtasks *selected-task*))
@@ -23,8 +25,8 @@
 
 (defun select-group (group)
   (cond
-    ((integerp group) (setf *selected-group* (nth group (current-groups))))
-    ((symbolp group) (if (find group (current-groups))
+    ((integerp group) (setf *selected-group* (nth group (groups-in-task-list))))
+    ((symbolp group) (if (find group (groups-in-task-list))
 			 (setf *selected-group* group)
                          (error "That group doesn't exist")))
     (t (error "Group is not of type integer or symbol"))))

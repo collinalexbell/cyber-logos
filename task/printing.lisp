@@ -2,6 +2,7 @@
 
 (defun print-all-task-info (options)
   (let ((show-task-menu (assoc :show-menu options)))
+    (print-current-groups)
     (print-current-task *selected-task*)
     (print-task-list nil)
     (if show-task-menu (print-task-menu))))
@@ -47,10 +48,12 @@
 
 (defun print-current-groups ()
   (format t "-----<Groups>-----~%~%")
-  (let ((current-groups (current-groups)))
+  (let ((current-groups (groups-in-task-list)))
     (loop for group in current-groups
           for i from 0 to (length current-groups)
-          do (format t "~d) ~a~%" i group)))
+          do (if (equal group *selected-group*)
+              (format t "~d) *~a~%" i group)
+              (format t "~d) ~a~%" i group))))
 
   (format t "~%-----</Groups>-----~%~%"))
 
