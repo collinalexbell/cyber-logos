@@ -12,6 +12,14 @@ cyber-logos
             modeling it,
             building it's [holon](https://en.wikipedia.org/wiki/Holon)).
 
+## Reading cyber-logos
+
+### Naming conventions
+This library is common lisp dominant and takes many of its conventions from CL
+
+#### files and directories
+most files and dirs are written in kebab case, however files and dirs in other languages use CamelCase.
+
 ### packages
 - logos
 - logos.task
