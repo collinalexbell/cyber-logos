@@ -12,7 +12,7 @@
 (defmethod print-current-task ((current-task null)))
 
 (defmethod print-current-task ((current-task task))
-  (when current-task 
+  (when current-task
     (print-task current-task)))
 
 (defmethod print-current-task ((task-list task-list))
