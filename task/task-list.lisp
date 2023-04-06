@@ -36,7 +36,7 @@
   (loop for i in indicies do (setf (inferior-logoss *selected-task*) (remove-nth i (inferior-logoss *selected-task*)))))
 
 (defun push-task-and-re-sort (task-instance)
-  (push task-instance (inferior-logoss *selected-task*))
+  (push task-instance (inferior-logoss (task-parent task-instance)))
   (setf (inferior-logoss *selected-task*)
 	(sort-by-priority (inferior-logoss *selected-task*))))
 

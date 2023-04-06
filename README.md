@@ -33,8 +33,10 @@ This is particularly useful when running "human NLP algorithms" or writing gpt p
 
 
 ### packages
-- logos
-- logos.task
+### logos
+### logos.task
+    - `(add-task '(show (add-task example)) :priority 10 :parent-task *root-task*)`
+
 - logos.goal
 
 ## config.json

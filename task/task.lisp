@@ -15,7 +15,8 @@
    (last-selected-time :accessor last-selected-time)
    (parent :accessor .parent
 	   :initarg :parent
-	   :initform nil)))
+	   :initform nil
+     :accessor task-parent)))
 
 (defun new-task (item priority task-groups parent &optional (xp 1000))
   (make-instance 'task
