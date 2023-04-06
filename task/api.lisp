@@ -1,18 +1,16 @@
 (in-package :logos.task)
 
-(setf (fdefinition 'add) #'add-task)
-(setf (fdefinition 'a) #'add-task)
-
-
-(defun complete ()
-  (when (or (null (subtasks *selected-task*))
-	    (yes-no "This task has subtasks.~%Do you wish to complete it?"))
-    (let ((selected-task *selected-task*))
-      (complete-task *selected-task*)
-      (format t "You spent ~d seconds in total working on this task~%"
-	      (task-selected-duration selected-task))))
-  (redisplay)
-  (backup *root-task*))
+(progn
+  (defun complete ()
+   (when (or (null (subtasks *selected-task*))
+	           (yes-no "This task has subtasks.~%Do you wish to complete it?"))
+     (let ((selected-task *selected-task*))
+       (complete-task *selected-task*)
+       (format t "You spent ~d seconds in total working on this task~%"
+	             (task-selected-duration selected-task))))
+   (redisplay)
+   (backup *root-task*))
+  (setf (fdefinition 'c) #'complete))
 
 (setf (fdefinition 'c) #'complete)
 
@@ -38,12 +36,14 @@
       (setf *selected-task* (.parent *selected-task*))
       time-diff)))
 
-(defun select (&optional (index 0))
-  (let ((task (nth index (filter-tasks-by-group (inferior-logoss *selected-task*) *selected-group*))))
-    (select-task task)
-    (setf (last-selected-time task) (get-universal-time))
-    (say-selected-task))
-  (tasks))
+(progn
+ (defun select (&optional (index 0))
+   (let ((task (nth index (filter-tasks-by-group (inferior-logoss *selected-task*) *selected-group*))))
+     (select-task task)
+     (setf (last-selected-time task) (get-universal-time))
+     (say-selected-task))
+   (tasks))
+ (setf (fdefinition 's) #'select))
 
 (defun next ()
   (unless (or (eq *selected-task* *root-task*) (null *selected-task*)) (complete))

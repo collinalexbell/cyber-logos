@@ -39,9 +39,11 @@
     (format t "~%")
     (loop for task in (filter-tasks-by-group (inferior-logoss *selected-task*) *selected-group*)
 	  for i from 0 to (length (inferior-logoss *selected-task*))
-	  do (format t "~a) ~dXP: ~a ~%" i
-		     (task-xp task)
-		     (task-description task)))))
+	  do (format t "~a) ~dPr ~dXP: ~a ~%"
+               i
+               (task-priority task)
+               (task-xp task)
+               (task-description task)))))
 
 (defun print-current-groups ()
   (format t "-----<Groups>-----~%~%")

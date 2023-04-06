@@ -4,8 +4,7 @@
   ((description :accessor task-description
 		:initarg :description)
    (priority :accessor task-priority
-	     :initarg :priority
-	     :initform 0)
+	     :initarg :priority)
    (xp :accessor task-xp :initarg :xp :initform 1)
    (groups :accessor task-groups
 	   :initarg :groups
