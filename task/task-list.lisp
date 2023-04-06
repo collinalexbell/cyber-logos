@@ -62,10 +62,12 @@
   (setf (fdefinition 'a) #'add-task))
 
 
-(defun add-tasks (&optional (tasks '()))
-  ;;tasks is a list of tasks
-  (loop for task in tasks
-        do (add-task task)))
+(progn
+ (defun add-tasks (&optional (tasks '()))
+   ;;tasks is a list of tasks
+   (loop for task in tasks
+         do (add-task task)))
+ (setf (fdefinition 'as) #'add-tasks))
 
 (parachute:define-test add-task-test
   (let (((inferior-logoss *selected-task*) '())
