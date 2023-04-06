@@ -14,11 +14,20 @@ cyber-logos
 
 ## Reading cyber-logos
 
-### Naming conventions
+### Conventions
 This library is common lisp dominant and takes many of its conventions from CL
 
-#### files and directories
+#### nameing files and directories
 most files and dirs are written in kebab case, however files and dirs in other languages use CamelCase.
+
+#### syntax
+this section will be a bit difficult for non-lispers to understand.
+
+In general, when repsenting data, the following symbols are always grouped:
+- proper nouns: `(GO TO (BATTERY PARK BIKEWAY))`
+- noun clauses: `(FLUFFY WHITE DOG)`
+
+This is particularly useful when running "human NLP algorithms" or writing gpt prompts
 
 ### packages
 - logos
