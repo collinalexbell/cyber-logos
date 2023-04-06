@@ -53,7 +53,7 @@
    (let ((x 0))
      (mapcar
       #'(lambda (to-be-sym)
-	  (if (zerop x) 
+	  (if (zerop x)
 	      (progn
 		(incf x)
 		(if (not (integerp to-be-sym))
