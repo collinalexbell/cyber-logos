@@ -35,7 +35,7 @@ This is particularly useful when running "human NLP algorithms" or writing gpt p
 ### packages
 ### logos
 ### logos.task
-    - `(add-task '(show (add-task example)) :priority 10 :parent-task *root-task*)`
+    - `(add-task '(show (add-task example)) :priority 10 :parent *root-task* :xp 20)`
 
 - logos.goal
 

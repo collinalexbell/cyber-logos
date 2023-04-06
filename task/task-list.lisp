@@ -112,14 +112,17 @@
     (true (= 0 (length (inferior-logoss *selected-task*))))
     (true (equal (type-of *derp*) 'task))))
 
-(defun delete-task (item)
-  (setf *selected-task* (.parent *selected-task*))
-  (setf (inferior-logoss *selected-task*)
-        (delete item (inferior-logoss *selected-task*) :test #'equal)))
+(defun delete-task (&optional (item *selected-task*))
+  (let
+      ((item-is-selected-task-p (eq item *selected-task*)))
+    (setf *selected-task* (.parent *selected-task*))
+    (setf (inferior-logoss *selected-task*)
+          (delete item (inferior-logoss *selected-task*) :test #'equal))
+    (if item-is-selected-task-p (tasks))))
 
 (parachute:define-test t-delete-task
   (let (((inferior-logoss *selected-task*) '())
-	(*selected-task* nil))
+        (*selected-task* nil))
     (add-task '(all i do is win))
     (select 0)
     (delete-task (first (inferior-logoss *selected-task*)))
@@ -143,21 +146,21 @@
 (defun select-task (item)
   (if (find item (inferior-logoss *selected-task*) :test #'equal)
       (progn (setf *selected-task* item)
-	     (gen-hook *selected-task* 'select))
+             (gen-hook *selected-task* 'select))
       (format t "Item does not exist in task list")))
 
 (parachute:define-test t-select-task
   (let (((inferior-logoss *selected-task*) '())
-	 (*selected-task* nil))
-     (add-task '(become a millionaire))
-     (select-task (first (inferior-logoss *selected-task*)))
+        (*selected-task* nil))
+    (add-task '(become a millionaire))
+    (select-task (first (inferior-logoss *selected-task*)))
     (true (equal '(become a millionaire) (task-description
-					  *selected-task*)))))
+                                          *selected-task*)))))
 
 (defun find-task (description)
   (find description (inferior-logoss *selected-task*)
-	:test #'(lambda (item task)
-		  (if (equal item (task-description task)) t nil))))
+        :test #'(lambda (item task)
+                  (if (equal item (task-description task)) t nil))))
 
 (parachute:define-test t-find-task
   (let* (((inferior-logoss *selected-task*) '()))
