@@ -47,15 +47,17 @@
     task-groups))
 
 (progn
- (defun add-task (item &key (priority 1) (xp 1)
+ (defun add-task (item &key
+                         (priority 1)
+                         (xp 1)
 			                   (task-groups '())
 			                   (parent *selected-task*))
+
    (setf task-groups (append task-groups (group-constants)))
    (push-task-and-re-sort
     (new-task item priority task-groups parent xp))
    (redisplay)
    (backup *root-task*))
-
   (setf (fdefinition 'add) #'add-task)
   (setf (fdefinition 'a) #'add-task))
 
