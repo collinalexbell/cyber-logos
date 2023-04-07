@@ -48,6 +48,10 @@
    (tasks))
  (setf (fdefinition 's) #'select))
 
+(defun select-root ()
+  (setf *selected-task* *root-task*)
+  (tasks))
+
 (defun next ()
   (unless (or (eq *selected-task* *root-task*) (null *selected-task*)) (complete))
   (unless (null (inferior-logoss *selected-task*)) (select)))
