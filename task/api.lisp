@@ -40,7 +40,8 @@
 
 (progn
  (defun select (&optional (index 0))
-   (let ((task (nth index (filter-tasks-by-group (inferior-logoss *selected-task*) *selected-group*))))
+   (let ((task (nth index (filter-tasks-by-group
+                           (logos:inferior-logoss *selected-task*) *selected-group*))))
      (select-task task)
      (setf (last-selected-time task) (get-universal-time))
      (say-selected-task))
@@ -60,3 +61,6 @@
 
 (defun find-task () ; to be implemented
   )
+
+(defun add-to-every (item)
+  (if (listp item) (loop for i from 0 to (length (inferior-logoss *selected-task*)) do (progn (select i) (a item) (deselect)))))

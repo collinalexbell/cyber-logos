@@ -146,7 +146,7 @@
     current-groups))
 
 (defun select-task (item)
-  (if (find item (inferior-logoss *selected-task*) :test #'equal)
+  (if (find item (logos:inferior-logoss *selected-task*) :test #'equal)
       (progn (setf *selected-task* item)
              (gen-hook *selected-task* 'select))
       (format t "Item does not exist in task list")))
