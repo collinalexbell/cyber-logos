@@ -10,3 +10,5 @@
 (defparameter *global-group-file* "groups.list")
 (defparameter *archive-file* "task-log")
 
+
+(defparameter *task-completed-counter* 0)

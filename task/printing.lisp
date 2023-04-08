@@ -25,6 +25,7 @@
       (list task)))
 
 (defun print-task (selected-task)
+  (format t "Tasks complete ~a~%" *task-completed-counter*)
   (loop for task in (reverse (get-task-chain selected-task))
 	count task into i
 	do (format t "~{~c~}~a~%"
@@ -60,7 +61,7 @@
 
 (defun print-current-groups ()
   (format t "-----<Groups>-----~%~%")
-  (let ((current-groups (current-groups)))
+  (let ((current-groups (groups-in-task-list)))
     (loop for group in current-groups
           for i from 0 to (length current-groups)
           do (format t "~d) ~a~%" i group)))

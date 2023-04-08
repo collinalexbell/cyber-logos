@@ -10,8 +10,9 @@
        (complete-task *selected-task*)
        (format t "You spent ~d seconds in total working on this task~%"
 	             (task-selected-duration selected-task))))
-   (redisplay)
-   (backup *root-task*))
+    (incf *task-completed-counter*)
+    (redisplay)
+    (backup *root-task*))
   (setf (fdefinition 'c) #'complete))
 
 (setf (fdefinition 'c) #'complete)
@@ -36,7 +37,8 @@
     (multiple-value-bind (accumulated-time time-diff) (accumulate-work-time *selected-task*)
       (format t "You just spent ~d seconds on this incomplete task, for a total of ~d ~%" time-diff accumulated-time)
       (setf *selected-task* (.parent *selected-task*))
-      time-diff)))
+      time-diff))
+  (tasks))
 
 (progn
  (defun select (&optional (index 0))
