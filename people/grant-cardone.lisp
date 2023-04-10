@@ -1,4 +1,7 @@
+(defpackage :logos.grant-cardone (:use :cl))
+(in-package :logos.grant-cardone)
 
+(defvar *current-quality* -1)
 (defvar qualities-of-the-successful
   '((have a can do attitude)
     (believe that i can figure it out)
@@ -32,3 +35,9 @@
     (be uncomfortable)
     (reach up and out in relationships)
     (be disciplined)))
+
+(defun next-quality-of-success ()
+  (setf *current-quality*
+        (mod (+ *current-quality* 1)
+           (length qualities-of-the-successful)))
+  (elt qualities-of-the-successful *current-quality*))
