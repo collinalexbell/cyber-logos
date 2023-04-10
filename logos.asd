@@ -17,4 +17,5 @@
                (:file "human")
                (:file "I")
                (:file "cyber-logos")
-               (:file "db/postgres")))
+               (:file "db/postgres")
+               (:file "daemons/package")))
