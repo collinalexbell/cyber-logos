@@ -47,6 +47,13 @@
 (defmethod renew ((logos logos))
   (format t "No method found"))
 
+(defun independence-of (logos superior))
+
+(defmethod freedom ((logos logos))
+  ;; Compute the level of free-will this logos has with respect to its superiors
+  
+  (loop for superior in (superior-logoss logos) collect (independence-of logos superior)))
+
 (defun shake (logos)
   (cascade logos #'renew))
 

@@ -37,3 +37,7 @@
     (imposition (power-through-spirit sporadic-physical-force))
     (inferior-attributes (strength violence intelligence wisdom physical-courage concern-for-community))
     ))
+
+
+(defun dignitas ())
+(defun fides ())

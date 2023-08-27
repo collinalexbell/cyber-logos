@@ -12,6 +12,7 @@
   :components ((:file "kuberlisp")
                (:file "logos")
                (:file "task/init")
+               (:file "daily/init")
                (:file "virtue")
                (:file "human")
                (:file "I")

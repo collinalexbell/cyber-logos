@@ -65,7 +65,7 @@
 (progn
  (defun add-tasks (&optional (tasks '()))
    ;;tasks is a list of tasks
-   (loop for task in tasks
+   (loop for task in (reverse tasks)
          do (add-task task)))
  (setf (fdefinition 'as) #'add-tasks))
 
