@@ -49,15 +49,18 @@
 (defun X-is-open? ()
   (window-open? "/ X "))
 
+(defun reddit-is-open? ()
+  (window-open? "Reddit"))
+
 (defun punishment-loop ()
-  (loop do (if (X-is-open?)
+  (loop do (if (or (X-is-open?) (reddit-is-open?))
                (rickroll)
                (sleep 1))))
 
-(defun start-X-moderation ()
+(defun start-social-media-moderation ()
   (let ((punishment-thread
           (sb-thread:make-thread #'punishment-loop)))
-    (defun stop-X-moderation ()
+    (defun stop-social-media-moderation ()
       (sb-thread:terminate-thread punishment-thread))))
 
 
