@@ -28,3 +28,4 @@ current.task-list
 **/*.stl
 **/*.gcode
 **/*.logos
+media/
