@@ -40,9 +40,9 @@
   (not (null
         (search in-name (wmctrl)))))
 
-(defun rickroll ()
+(defun refocus ()
   (sb-ext:run-program "/usr/bin/mplayer"
-                      '("media/rickroll.mp4"
+                      '("media/singing_bowl.mp4"
                         "-xy" "400"
                         "-pausing" "2")))
 
@@ -52,18 +52,27 @@
 (defun reddit-is-open? ()
   (window-open? "Reddit"))
 
-(defun punishment-loop ()
+(defun focus-loop ()
   (loop do (if (or (X-is-open?) (reddit-is-open?))
-               (rickroll)
+               (refocus)
                (sleep 1))))
 
 (defun start-social-media-moderation ()
-  (let ((punishment-thread
-          (sb-thread:make-thread #'punishment-loop)))
+  (let ((focus-thread
+          (sb-thread:make-thread #'focus-loop)))
     (defun stop-social-media-moderation ()
-      (sb-thread:terminate-thread punishment-thread))))
+      (sb-thread:terminate-thread focus-thread))))
 
 
 (defun status ()
   (tasks)
   (format t "~%~%DO NOT GO ON TWITTER~%~%"))
+
+(defun tweets-not-short-enough (tweets)
+  ;; use loop
+  (loop for tweet in tweets
+        when (> (length tweet) 280)
+          collect tweet))
+
+
+
