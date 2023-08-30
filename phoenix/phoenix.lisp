@@ -23,8 +23,9 @@
 (defvar routine-count 0)
 
 (defun routine ()
-  (add-tasks '((read about magic)
+  (add-tasks '((spiritual reading)
                (meditate)
+               (technical reading)
                (improve matrix code)
                (improve pheonix code)))
   (format t "Routines ran: ~a~%" (incf routine-count))
