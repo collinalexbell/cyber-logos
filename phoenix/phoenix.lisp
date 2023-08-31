@@ -58,5 +58,7 @@
                                :repeat-interval (* 24 60 60)
                                :absolute-p t)))))
 
+;; write code to turn off these timers if I want to
+
 
 
