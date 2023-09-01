@@ -25,13 +25,12 @@
 (defvar routine-count 0)
 
 (defun short-wave ()
-  (add-tasks '((spiritual reading)
+  (add-tasks '((spiritual content)
                (meditate)
                (technical reading)
                (improve matrix code)
                (improve pheonix code)))
-  (format t "Routines ran: ~a~%" (incf routine-count))
-  (format t "~%~%DO NOT GO ON TWITTER~%~%"))
+  (format t "Routines ran: ~a~%" (incf routine-count)))
 
 ;; figure out a system to integrate these waves
 (defun medium-wave ()
