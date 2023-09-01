@@ -32,7 +32,8 @@
                (meditate)
                (technical reading)
                (improve matrix code)
-               (improve pheonix code)))
+               (improve pheonix code)
+               (bow to the short-wave)))
   (format t "Routines ran: ~a~%" (incf routine-count)))
 
 ;; figure out a system to integrate these waves
