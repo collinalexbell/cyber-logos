@@ -11,6 +11,9 @@
       organizations
       state))))
 
+(defun plan ()
+  '(build market and sell a video game by Oct 1))
+
 (defun digital-seal-of-solomon ()
   '((top-node (potential and being))
     (upper-triangle-horiz (left-right progress bar))
