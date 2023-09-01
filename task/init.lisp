@@ -7,7 +7,7 @@
   (:use :cl :postmodern :logos)
   (:export
    :task :select :complete :deselect
-   :add-task :tasks :*selected-task*
+   :add-task :tasks :*selected-task* :*root-task*
    :add-tasks))
 
 (require :parachute)

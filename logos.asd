@@ -14,6 +14,7 @@
                (:file "task/init")
                (:file "daily/init")
                (:file "virtue")
+               (:file "phoenix/phoenix")
                (:file "human")
                (:file "I")
                (:file "cyber-logos")
