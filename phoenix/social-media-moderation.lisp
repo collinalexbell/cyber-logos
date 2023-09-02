@@ -15,14 +15,14 @@
                         "-xy" "400"
                         "-pausing" "2")))
 
-(defun X-is-open? ()
-  (window-open? "/ X "))
-
-(defun reddit-is-open? ()
-  (window-open? "Reddit"))
+(defparameter black-list
+  '("/ X "
+    "Reddit"
+    "4chan"
+    "YouTube"))
 
 (defun focus-loop ()
-  (loop do (if (or (X-is-open?) (reddit-is-open?))
+  (loop do (if (some #'window-open? black-list)
                (refocus)
                (sleep 1))))
 
@@ -31,7 +31,6 @@
           (sb-thread:make-thread #'focus-loop)))
     (defun stop-social-media-moderation ()
       (sb-thread:terminate-thread focus-thread))))
-
 
 (defun status ()
   (tasks)
