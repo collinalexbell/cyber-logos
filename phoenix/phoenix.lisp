@@ -1,4 +1,4 @@
-(defpackage :logos.pheonix (:use :cl :logos.task))
+(defpackage :logos.pheonix (:use :cl :logos.task :postmodern))
 (in-package :logos.pheonix)
 
 (load "phoenix/social-media-moderation")
