@@ -25,16 +25,13 @@
 (defun self-commandments ()
   '((if (i.get-distracted) ((i.delete the-task) and (move-on)))))
 
-(defvar routine-count 0)
-
 (defun short-wave ()
   (add-tasks '((spiritual content)
                (meditate)
                (technical reading)
                (improve matrix code)
                (improve pheonix code)
-               (bow to the short-wave)))
-  (format t "Routines ran: ~a~%" (incf routine-count)))
+               (bow to the short-wave))))
 
 ;; figure out a system to integrate these waves
 (defun medium-wave ()
