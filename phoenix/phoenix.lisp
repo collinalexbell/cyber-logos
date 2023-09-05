@@ -34,7 +34,7 @@
     (short-wave)))
 
 (defun short-wave ()
-  (add-tasks '((get coffee)
+  (add-tasks '((get coffee or tea)
                (spiritual content)
                (meditate)
                (technical reading)
