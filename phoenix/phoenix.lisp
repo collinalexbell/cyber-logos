@@ -34,14 +34,16 @@
   ;; to monitor the short-wave's progress
   (loop repeat short-waves-per-day collect '(short-wave)))
 
-(defun short-wave ()
-  (add-tasks '((get coffee or tea)
-               (spiritual content)
-               (meditate)
-               (technical reading)
-               (improve matrix code)
-               (improve pheonix code)
-               (bow to the short-wave)))
+;; &rest time
+(defun short-wave (&key ((:interval interval)))
+  (let ((interval-insert (if interval `((for ,interval minutes)) nil)))
+   (add-tasks `((get coffee or tea)
+                (spiritual content ,@interval-insert)
+                (meditate ,interval-insert)
+                (technical reading ,@interval-insert)
+                (improve matrix code ,@interval-insert)
+                (improve pheonix code ,@interval-insert)
+                (bow to the short-wave))))
   (format t "Short waves ran: ~a~%" (incf short-wave-count)))
 
 ;; figure out a system to integrate these waves
