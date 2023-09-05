@@ -27,6 +27,12 @@
 
 (defvar short-wave-count 0)
 
+(defun long-wave ()
+  ;; might be useful to use the long-wave
+  ;; to monitor the short-wave's progress
+  '(dotimes (per-day 10)
+    (short-wave)))
+
 (defun short-wave ()
   (add-tasks '((get coffee)
                (spiritual content)
