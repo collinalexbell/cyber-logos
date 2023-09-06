@@ -35,14 +35,21 @@
   (loop repeat short-waves-per-day collect '(short-wave)))
 
 ;; &rest time
-(defun short-wave (&key ((:interval interval)))
+(defun short-wave (&key ((:interval interval)) ((:for for)))
   (let ((interval-insert (if interval `((for ,interval minutes)) nil)))
    (add-tasks `((get coffee or tea)
-                (spiritual content ,@interval-insert)
-                (meditate ,interval-insert)
-                (technical reading ,@interval-insert)
-                (improve matrix code ,@interval-insert)
-                (improve pheonix code ,@interval-insert)
+                (spiritual content ,@(if (or (eq for :all) (find '(spiritual content) for :test #'equal))
+                               interval-insert))
+                (meditate ,@(if (or (eq for :all) (find '(meditate) for :test #'equal))
+                      interval-insert))
+                (technical reading
+                           ,@(if (or (eq for :all) (find '(technical reading) for :test #'equal))
+                                        interval-insert))
+                (improve matrix code
+                         ,@(if (or (eq for :all) (find '(improve matrix code) for :test #'equal))
+                                          interval-insert))
+                (improve pheonix code ,@(if (or (eq for :all) (find '(improve phoenix code) for :test #'equal))
+                                           interval-insert))
                 (bow to the short-wave))))
   (format t "Short waves ran: ~a~%" (incf short-wave-count)))
 
