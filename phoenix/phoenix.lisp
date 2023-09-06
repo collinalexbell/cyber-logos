@@ -53,6 +53,11 @@
                 (bow to the short-wave))))
   (format t "Short waves ran: ~a~%" (incf short-wave-count)))
 
+(defun medium-wave ()
+  ;; run every 2 short waves
+  (add-tasks '((walk dog)
+               (make coffee))))
+
 (defun time-of-day-tasks (time)
   ;; run once per time of day
   (add-tasks (cond
