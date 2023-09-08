@@ -19,6 +19,10 @@
     (upper-triangle-horiz (left-right progress bar))
     (bottom-node (opprotunity-cost and scrifice))))
 
+(defparameter commitments
+  '(
+    (every time the distraction bell rings - do 5 pushups)))
+
 (defvar short-wave-count 0)
 
 (defparameter short-waves-per-day 10)
