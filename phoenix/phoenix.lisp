@@ -51,8 +51,8 @@
 
 (defun medium-wave ()
   ;; run every 2 short waves
-  (add-tasks '((walk dog)
-               (make coffee))))
+  (add-tasks '((make coffee)
+               (walk dog))))
 
 (defun time-of-day-tasks (time)
   ;; run once per time of day
