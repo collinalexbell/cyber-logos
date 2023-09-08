@@ -19,12 +19,6 @@
     (upper-triangle-horiz (left-right progress bar))
     (bottom-node (opprotunity-cost and scrifice))))
 
-(defun matrix ()
-  '((uses (digital-seal-of-solomon))))
-
-(defun self-commandments ()
-  '((if (i.get-distracted) ((i.delete the-task) and (move-on)))))
-
 (defvar short-wave-count 0)
 
 (defparameter short-waves-per-day 10)
@@ -36,21 +30,23 @@
 
 ;; &rest time
 (defun short-wave (&key ((:interval interval)) ((:for for)))
-  (let ((interval-insert (if interval `((for ,interval minutes)) nil)))
-   (add-tasks `((get coffee or tea)
-                (spiritual content ,@(if (or (eq for :all) (find '(spiritual content) for :test #'equal))
-                               interval-insert))
-                (meditate ,@(if (or (eq for :all) (find '(meditate) for :test #'equal))
-                      interval-insert))
-                (technical reading
-                           ,@(if (or (eq for :all) (find '(technical reading) for :test #'equal))
-                                        interval-insert))
-                (improve matrix code
-                         ,@(if (or (eq for :all) (find '(improve matrix code) for :test #'equal))
-                                          interval-insert))
-                (improve pheonix code ,@(if (or (eq for :all) (find '(improve phoenix code) for :test #'equal))
-                                           interval-insert))
-                (bow to the short-wave))))
+  (let ((tasks '((get coffee or tea)
+                 (spiritual reading)
+                 (meditate)
+                 (technical reading)
+                 (improve matrix infode)
+                 (improve pheonix infode)
+                 (bow to the short-wave)))
+
+        (interval-insert (if interval `((for ,interval minutes)) nil)))
+        (loop for task in (reverse tasks) do
+          (let ((task-with-metadata `(,@task
+                                      ,@(if (or (eq for :all)
+                                                (find task for :test #'equal))
+                                            interval-insert))))
+            (add-task task-with-metadata))))
+
+
   (format t "Short waves ran: ~a~%" (incf short-wave-count)))
 
 (defun medium-wave ()
