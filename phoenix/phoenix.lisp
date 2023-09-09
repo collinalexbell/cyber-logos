@@ -1,4 +1,4 @@
-(defpackage :logos.phoenix (:use :cl :logos.task :postmodern) (:export :short-wave-hook))
+(defpackage :logos.phoenix (:use :cl :logos.task :postmodern) (:export :short-wave-hook :tweet-complete-hook :tweet-select-hook))
 (in-package :logos.phoenix)
 
 (load "phoenix/social-media-moderation")
@@ -37,8 +37,15 @@
   (if (= 0 (mod short-wave-count 2))
       (medium-wave)))
 
+(defun tweet-select-hook (task)
+  (stop-social-media-moderation))
+(defun tweet-complete-hook (task)
+  (start-social-media-moderation))
+
 (in-package :logos.task)
 (setf (fdefinition 'hook-complete-BOW_TO_THE_SHORT-WAVE) #'logos.phoenix:short-wave-hook)
+(setf (fdefinition 'hook-complete-TWEET) #'logos.phoenix:tweet-complete-hook)
+(setf (fdefinition 'hook-select-TWEET) #'logos.phoenix:tweet-select-hook)
 (in-package :logos.phoenix)
 
 ;; &rest time
