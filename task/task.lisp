@@ -83,7 +83,7 @@
 	 (make-task-action-hook-symbol action
 				       (task-description the-task))))
     (when (symbol-exists-p the-hook-sym)
-	(funcall (symbol-function the-hook-sym) the-task))))
+       (funcall (symbol-function the-hook-sym) the-task))))
 
 (defun say-selected-task ()
   (let ((words (format nil "~a" (task-description *selected-task*))))

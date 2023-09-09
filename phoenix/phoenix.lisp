@@ -1,8 +1,7 @@
-(defpackage :logos.pheonix (:use :cl :logos.task :postmodern))
-(in-package :logos.pheonix)
+(defpackage :logos.phoenix (:use :cl :logos.task :postmodern) (:export :short-wave-hook))
+(in-package :logos.phoenix)
 
 (load "phoenix/social-media-moderation")
-
 (defun mission ()
   '(I spend a fully pre-funded (150k) year
     (studying planning designing and implementing
@@ -21,7 +20,8 @@
 
 (defparameter commitments
   '(
-    (every time the distraction bell rings - do 5 pushups)))
+    (every time the distraction bell rings - do 5 pushups)
+    ))
 
 (defvar short-wave-count 0)
 
@@ -32,14 +32,25 @@
   ;; to monitor the short-wave's progress
   (loop repeat short-waves-per-day collect '(short-wave)))
 
+(defun short-wave-hook (task)
+  (format t "lesgo")
+  (if (= 0 (mod short-wave-count 2))
+      (medium-wave)))
+
+(in-package :logos.task)
+(setf (fdefinition 'hook-complete-BOW_TO_THE_SHORT-WAVE) #'logos.phoenix:short-wave-hook)
+(in-package :logos.phoenix)
+
 ;; &rest time
 (defun short-wave (&key ((:interval interval)) ((:for for)))
   (let ((tasks '((get coffee or tea)
                  (spiritual reading)
-                 (meditate)
                  (technical reading)
                  (improve matrix infode)
                  (improve pheonix infode)
+                 (tweet)
+                 (meditate)
+                 ;; do medium wave oncomplete hook
                  (bow to the short-wave)))
 
         (interval-insert (if interval `((for ,interval minutes)) nil)))
@@ -50,9 +61,9 @@
                                             interval-insert))))
             (add-task task-with-metadata))))
 
-
   (format t "Short waves ran: ~a~%" (incf short-wave-count)))
 
+(defparameter medium-wave-wavelength 2)
 (defun medium-wave ()
   ;; run every 2 short waves
   (add-tasks '((make coffee)
