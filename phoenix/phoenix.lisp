@@ -10,8 +10,12 @@
       organizations
       state))))
 
+(defun matrix ()
+  '((Im building a game engine and game)
+    (to be renamed)))
+
 (defun plan ()
-  '(build market and sell a video game by Oct 1))
+  '(build market and sell (matrix) by Oct 1))
 
 (defun digital-seal-of-solomon ()
   '((top-node (potential and being))
@@ -33,7 +37,6 @@
   (loop repeat short-waves-per-day collect '(short-wave)))
 
 (defun short-wave-hook (task)
-  (format t "lesgo")
   (if (= 0 (mod short-wave-count 2))
       (medium-wave)))
 
@@ -54,7 +57,7 @@
                  (spiritual reading)
                  (technical reading)
                  (improve matrix infode)
-                 (improve pheonix infode)
+                 (improve phoenix infode)
                  (tweet)
                  (meditate)
                  ;; do medium wave oncomplete hook
@@ -80,7 +83,7 @@
   ;; run once per time of day
   (add-tasks (cond
                ((eq time :afternoon) '((run)))
-               ((eq time :morning) '((clean) (make-coffee)))
+               ((eq time :wake-up) '((clean) (make-coffee)))
                ((eq time :evening) '((shower))))))
 
 (load "phoenix/cron")

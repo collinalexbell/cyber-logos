@@ -1,4 +1,4 @@
-(in-package :logos.pheonix)
+(in-package :logos.phoenix)
 (defun wmctrl ()
   (let ((output (make-string-output-stream)))
     (sb-ext:run-program "/usr/bin/wmctrl"
