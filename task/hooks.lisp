@@ -2,6 +2,10 @@
 
 (in-package :logos.task)
 
+(defparameter hooks '())
+(defun add-hook (task action hook))
+(defun get-hook (task action))
+
 (defun hook-select-smile (the-task)
   (format t "Please smile~%")
   (sleep 1)

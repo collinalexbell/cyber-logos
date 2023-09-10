@@ -1,4 +1,4 @@
-(defpackage :logos.phoenix (:use :cl :logos.task :postmodern) (:export :short-wave-hook :tweet-complete-hook :tweet-select-hook))
+(defpackage :logos.phoenix (:use :cl :logos.task :postmodern) (:export :short-wave-hook :tweet-complete-hook :tweet-select-hook :what-did-you-think-about-reading))
 (in-package :logos.phoenix)
 
 (load "phoenix/social-media-moderation")
@@ -42,11 +42,18 @@
   (stop-social-media-moderation))
 (defun tweet-complete-hook (task)
   (start-social-media-moderation))
+(defun what-did-you-think-about-reading (task)
+  (sb-ext:run-program "/usr/bin/terminator"
+                      '("-f"
+                        "-x"
+                        "vim ~/notes/spiritual-reading-thoughts")))
 
 (in-package :logos.task)
 (setf (fdefinition 'hook-complete-BOW_TO_THE_SHORT-WAVE) #'logos.phoenix:short-wave-hook)
 (setf (fdefinition 'hook-complete-TWEET) #'logos.phoenix:tweet-complete-hook)
 (setf (fdefinition 'hook-select-TWEET) #'logos.phoenix:tweet-select-hook)
+(setf (fdefinition 'hook-complete-SPIRITUAL_READING)
+      #'logos.phoenix:what-did-you-think-about-reading)
 (in-package :logos.phoenix)
 
 ;; &rest time
