@@ -18,8 +18,7 @@
 (defparameter black-list
   '("/ X "
     "Reddit"
-    "4chan"
-    "YouTube"))
+    "4chan"))
 
 (defun focus-loop ()
   (loop do (if (some #'window-open? black-list)

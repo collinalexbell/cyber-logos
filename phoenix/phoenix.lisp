@@ -23,9 +23,7 @@
     (bottom-node (opprotunity-cost and scrifice))))
 
 (defparameter commitments
-  '(
-    (every time the distraction bell rings - do 5 pushups)
-    ))
+  '((every time the distraction bell rings - do 5 pushups)))
 
 (defvar short-wave-count 0)
 
