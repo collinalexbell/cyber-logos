@@ -9,7 +9,9 @@
    :task :select :complete :deselect
    :delete-selected
    :add-task :tasks :*selected-task* :*root-task*
-   :add-tasks))
+   :add-tasks
+   :add-hook
+   :delete-hook))
 
 (require :parachute)
 (in-package :logos.task)

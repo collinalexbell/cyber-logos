@@ -4,6 +4,7 @@
 
 (defparameter hooks '())
 (defun add-hook (task action hook))
+(defun delete-hook (task action))
 (defun get-hook (task action))
 
 (defun hook-select-smile (the-task)
