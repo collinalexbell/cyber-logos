@@ -15,7 +15,11 @@
     (to be renamed)))
 
 (defun plan ()
-  '(build market and sell (matrix) by Oct 1))
+  '(overview (build market and sell (matrix) by Oct 1)
+    steps (
+           (learn opengl)
+           (learn voxel engines)
+           (in-game-voxel-code editing))))
 
 (defun digital-seal-of-solomon ()
   '((top-node (potential and being))
