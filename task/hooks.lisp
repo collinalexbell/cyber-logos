@@ -4,7 +4,7 @@
 
 (defparameter hooks '())
 (defun add-hook (task action hook)
-  ;; ((task description ((action hook))))
+  ;; should probably do a replace instead of shadowing
   (setf hooks (acons (task-description task) (acons action hook (get-hooks task)) hooks)))
 
 (defun delete-hook (task action))
