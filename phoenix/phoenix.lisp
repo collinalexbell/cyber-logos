@@ -43,6 +43,7 @@
       (medium-wave)))
 
 (defun tweet-select-hook (task)
+  (format t "called")
   (stop-social-media-moderation))
 (defun tweet-complete-hook (task)
   (start-social-media-moderation))
@@ -52,6 +53,10 @@
                         "-x"
                         "vim ~/notes/spiritual-reading-thoughts")))
 
+(add-hook '(bow to the short-wave) :complete #'short-wave-hook)
+(add-hook '(tweet) :select #'tweet-select-hook)
+(add-hook '(tweet) :complete #'tweet-complete-hook)
+(add-hook '(spiritual reading) :complete #'what-did-you-think-about-reading)
 (in-package :logos.task)
 (setf (fdefinition 'hook-complete-BOW_TO_THE_SHORT-WAVE) #'logos.phoenix:short-wave-hook)
 (setf (fdefinition 'hook-complete-TWEET) #'logos.phoenix:tweet-complete-hook)

@@ -11,6 +11,7 @@
    :add-task :tasks :*selected-task* :*root-task*
    :add-tasks
    :add-hook
+   :get-hook
    :delete-hook))
 
 (require :parachute)

@@ -3,16 +3,16 @@
 (in-package :logos.task)
 
 (defparameter hooks '())
-(defun add-hook (task action hook)
+(defun add-hook (task-description action hook)
   ;; should probably do a replace instead of shadowing
-  (setf hooks (acons (task-description task) (acons action hook (get-hooks task)) hooks)))
+  (setf hooks (acons task-description (acons action hook (get-hooks task-description)) hooks)))
 
 (defun delete-hook (task action))
 
-(defun get-hooks (task)
-  (cdr (assoc (task-description task) hooks :test #'equal)))
-(defun get-hook (task action)
-  (cdr (assoc action (get-hooks task) :test #'equal)))
+(defun get-hooks (task-description)
+  (cdr (assoc task-description hooks :test #'equal)))
+(defun get-hook (task-description action)
+  (cdr (assoc action (get-hooks task-description) :test #'equal)))
 
 (defun hook-select-smile (the-task)
   (format t "Please smile~%")

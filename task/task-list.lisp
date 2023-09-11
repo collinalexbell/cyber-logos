@@ -98,7 +98,8 @@
      (apply #'twitter-save-completed-task `(,*selected-task*)))
     ((eql *saved-task-backend* 'txt)
      (txt-save-completed-task *selected-task*)))
-  (gen-hook *selected-task* 'complete)
+  (let ((hook (get-hook (task-description item) :complete)))
+    (if hook (funcall hook item)))
   (delete-task item))
 
 (parachute:define-test t-complete-task
@@ -148,7 +149,8 @@
 (defun select-task (item)
   (if (find item (logos:inferior-logoss *selected-task*) :test #'equal)
       (progn (setf *selected-task* item)
-             (gen-hook *selected-task* 'select))
+             (let ((hook (get-hook (task-description item) :select)))
+               (if hook (funcall hook item))))
       (format t "Item does not exist in task list")))
 
 (parachute:define-test t-select-task
