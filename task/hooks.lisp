@@ -3,9 +3,16 @@
 (in-package :logos.task)
 
 (defparameter hooks '())
-(defun add-hook (task action hook))
+(defun add-hook (task action hook)
+  ;; ((task description ((action hook))))
+  (setf hooks (acons (task-description task) (acons action hook (get-hooks task)) hooks)))
+
 (defun delete-hook (task action))
-(defun get-hook (task action))
+
+(defun get-hooks (task)
+  (cdr (assoc (task-description task) hooks)))
+(defun get-hook (task action)
+  (cdr (assoc action (get-hooks task))))
 
 (defun hook-select-smile (the-task)
   (format t "Please smile~%")
