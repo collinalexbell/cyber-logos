@@ -10,9 +10,9 @@
 (defun delete-hook (task action))
 
 (defun get-hooks (task)
-  (cdr (assoc (task-description task) hooks)))
+  (cdr (assoc (task-description task) hooks :test #'equal)))
 (defun get-hook (task action)
-  (cdr (assoc action (get-hooks task))))
+  (cdr (assoc action (get-hooks task) :test #'equal)))
 
 (defun hook-select-smile (the-task)
   (format t "Please smile~%")
