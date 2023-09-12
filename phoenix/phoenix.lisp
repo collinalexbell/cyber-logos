@@ -57,13 +57,6 @@
 (add-hook '(tweet) :select #'tweet-select-hook)
 (add-hook '(tweet) :complete #'tweet-complete-hook)
 (add-hook '(spiritual reading) :complete #'what-did-you-think-about-reading)
-(in-package :logos.task)
-(setf (fdefinition 'hook-complete-BOW_TO_THE_SHORT-WAVE) #'logos.phoenix:short-wave-hook)
-(setf (fdefinition 'hook-complete-TWEET) #'logos.phoenix:tweet-complete-hook)
-(setf (fdefinition 'hook-select-TWEET) #'logos.phoenix:tweet-select-hook)
-(setf (fdefinition 'hook-complete-SPIRITUAL_READING)
-      #'logos.phoenix:what-did-you-think-about-reading)
-(in-package :logos.phoenix)
 
 ;; &rest time
 (defun short-wave (&key ((:interval interval)) ((:for for)))
