@@ -47,11 +47,12 @@
   (stop-social-media-moderation))
 (defun tweet-complete-hook (task)
   (start-social-media-moderation))
+
 (defun what-did-you-think-about-reading (task)
   (sb-ext:run-program "/usr/bin/terminator"
                       '("-f"
                         "-x"
-                        "vim ~/notes/spiritual-reading-thoughts")))
+                        "vim /home/collin/notes/spiritual-reading-thoughts")))
 
 (add-hook '(bow to the short-wave) :complete #'short-wave-hook)
 (add-hook '(tweet) :select #'tweet-select-hook)
