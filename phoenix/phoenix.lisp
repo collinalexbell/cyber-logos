@@ -15,7 +15,9 @@
     (to be renamed)))
 
 (defun plan ()
-  '(overview (build market and sell (matrix) by Oct 1)
+  '(overview ((build market and sell (matrix) by Oct 1)
+              (use the money to either go to Florida and the Portland)
+              (more money may (probably will) be procured in Florida))
     steps (
            (learn opengl)
            (learn voxel engines)
