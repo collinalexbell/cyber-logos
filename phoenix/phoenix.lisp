@@ -18,10 +18,15 @@
   '(overview ((build market and sell (matrix) by Oct 1)
               (use the money to either go to Florida and the Portland)
               (more money may (probably will) be procured in Florida))
-    steps (
-           (learn opengl)
+
+    steps ((learn opengl)
            (learn voxel engines)
            (in-game-voxel-code editing))))
+
+(defun strategies ()
+  '(((when I feel defeated about the complexity of things) . ((meditate to rise above them)
+                                                              (have faith in the universe)
+                                                              (keep going to the best of my ability)))))
 
 (defun digital-seal-of-solomon ()
   '((top-node (potential and being))
@@ -67,6 +72,7 @@
                  (spiritual reading)
                  (technical reading)
                  (improve matrix infode)
+                 (think about how to get deeper into flow)
                  (improve phoenix infode)
                  (tweet)
                  (meditate)
