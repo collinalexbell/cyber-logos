@@ -70,7 +70,10 @@
   (drakma:http-request "http://localhost:9005"
                        :method :post
                        :content-type "text/plain"
-                       :additional-headers '(("password" . "password123"))
+
+                       :additional-headers
+                       `(("password" . ,(car (uiop:read-file-lines "phoenix/emacs-password"))))
+
                        :content (format nil "~S" form)))
 
 (defun open-in-buffer (filename)
