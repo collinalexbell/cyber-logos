@@ -3,4 +3,6 @@
 
 (defparameter source "The Art of Game Design")
 
-(defparameter lenses ())
+(defparameter lenses ()
+  "Small sets of questions used to drive game design"
+  )
