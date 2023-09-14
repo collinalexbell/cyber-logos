@@ -1,7 +1,9 @@
+(ql:quickload :drakma)
 (defpackage :logos.phoenix (:use :cl :logos.task :postmodern) (:export :short-wave-hook :tweet-complete-hook :tweet-select-hook :what-did-you-think-about-reading))
 (in-package :logos.phoenix)
 
 (load "phoenix/social-media-moderation")
+(load "phoenix/matrix")
 (defun mission ()
   '(I spend a fully pre-funded (150k) year
     (studying planning designing and implementing
@@ -59,7 +61,21 @@
   (sb-ext:run-program "/usr/bin/terminator"
                       '("-f"
                         "-x"
-                        "vim /home/collin/notes/spiritual-reading-thoughts")))
+                        "vim /home/collin/notes/spiritual-reading-thoughts")
+                      )
+  ;curl -d "(switch-to-buffer (find-file-noselect \"~/notes/\" nil nil nil))" -X POST -H "Content-Type: text/plain" -H "password: laz39ere" http://localhost:9005
+  )
+
+(defun elisp (form)
+  (drakma:http-request "http://localhost:9005"
+                       :method :post
+                       :content-type "text/plain"
+                       :additional-headers '(("password" . "password123"))
+                       :content (format nil "~S" form)))
+
+(defun open-in-buffer (filename)
+  (let ((form `(switch-to-buffer (find-file-noselect ,filename nil nil nil))))
+    (elisp form)))
 
 (add-hook '(bow to the short-wave) :complete #'short-wave-hook)
 (add-hook '(tweet) :select #'tweet-select-hook)
