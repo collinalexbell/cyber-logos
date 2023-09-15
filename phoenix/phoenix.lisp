@@ -116,7 +116,7 @@
                ((eq time :afternoon) '((run)))
                ((eq time :wake-up) '((clean) (make-coffee)))
                ((eq time :evening) '((shower)))
-               ((eq time :early-night)'((sleep) (brush) (floss))))))
+               ((eq time :early-night)'((sleep) ((brush) (floss)))))))
 
 (load "phoenix/cron")
 
