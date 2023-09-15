@@ -57,14 +57,6 @@
 (defun tweet-complete-hook (task)
   (start-social-media-moderation))
 
-(defun what-did-you-think-about-reading (task)
-  (sb-ext:run-program "/usr/bin/terminator"
-                      '("-f"
-                        "-x"
-                        "vim /home/collin/notes/spiritual-reading-thoughts")
-                      )
-  ;curl -d "(switch-to-buffer (find-file-noselect \"~/notes/\" nil nil nil))" -X POST -H "Content-Type: text/plain" -H "password: laz39ere" http://localhost:9005
-  )
 
 (defun elisp (form)
   (drakma:http-request "http://localhost:9005"
@@ -79,6 +71,10 @@
 (defun open-in-buffer (filename)
   (let ((form `(switch-to-buffer (find-file-noselect ,filename nil nil nil))))
     (elisp form)))
+
+
+(defun what-did-you-think-about-reading (task)
+  (open-in-buffer "~/notes/spiritual-reading-thoughts"))
 
 (add-hook '(bow to the short-wave) :complete #'short-wave-hook)
 (add-hook '(tweet) :select #'tweet-select-hook)
@@ -119,7 +115,8 @@
   (add-tasks (cond
                ((eq time :afternoon) '((run)))
                ((eq time :wake-up) '((clean) (make-coffee)))
-               ((eq time :evening) '((shower))))))
+               ((eq time :evening) '((shower)))
+               ((eq time :early-night)'((sleep) (brush) (floss))))))
 
 (load "phoenix/cron")
 
