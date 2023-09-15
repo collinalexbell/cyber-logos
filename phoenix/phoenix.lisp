@@ -114,7 +114,7 @@
   ;; run once per time of day
   (add-tasks (cond
                ((eq time :afternoon) '((run)))
-               ((eq time :wake-up) '((clean) (make-coffee)))
+               ((eq time :wake-up) '((make-coffee) (clean) (if weekday (apply for job))))
                ((eq time :evening) '((shower)))
                ((eq time :early-night)'((sleep) ((brush) (floss)))))))
 
