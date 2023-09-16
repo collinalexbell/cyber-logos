@@ -99,8 +99,8 @@
     ((eql *saved-task-backend* 'txt)
      (txt-save-completed-task *selected-task*)))
   (let ((hook (get-hook (task-description item) :complete)))
-    (if hook (funcall hook item)))
-  (delete-task item))
+    (delete-task item)
+    (if hook (funcall hook item))))
 
 (parachute:define-test t-complete-task
   (let* (((inferior-logoss *selected-task*) '())
