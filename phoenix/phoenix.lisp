@@ -31,6 +31,12 @@
                                                               (keep going to the best of my ability)))))
 
 (defun digital-seal-of-solomon ()
+  (logos.phoenix.matrix:add-cube 0 5 -20)
+  (logos.phoenix.matrix:add-cube 0 -5 -20)
+  (logos.phoenix.matrix:add-cube 5 -2 -20)
+  (logos.phoenix.matrix:add-cube -5 -2 -20)
+  (logos.phoenix.matrix:add-cube 5 2 -20)
+  (logos.phoenix.matrix:add-cube -5 2 -20)
   '((top-node (potential and being))
     (upper-triangle-horiz (left-right progress bar))
     (bottom-node (opprotunity-cost and scrifice))))
@@ -91,7 +97,6 @@
                  (technical reading)
                  (tweet)
                  (improve matrix infode)
-                 (think about how to get deeper into flow)
                  (improve phoenix infode)
                  (meditate)
                  ;; do medium wave oncomplete hook
