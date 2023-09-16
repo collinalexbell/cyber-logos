@@ -34,11 +34,11 @@
 
 
 
-    ,(make-lens `()
+    ,(make-lens `(The Lens of Curiosity)
 
-                `(()
-                  ()
-                  ()))))
+                `((What questions does my game put into the players mind)
+                  (What am I doing to make them care about these questions)
+                  (What can I do to make them invent even more questions)))))
 
 
 
