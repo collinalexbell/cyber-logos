@@ -48,7 +48,7 @@
   (loop repeat short-waves-per-day collect '(short-wave)))
 
 (defun short-wave-hook (task)
-  (if (= 0 (mod short-wave-count 2))
+  (if (= 0 (mod short-wave-count medium-wave-wavelength))
       (medium-wave)))
 
 (defun tweet-select-hook (task)
@@ -81,15 +81,18 @@
 (add-hook '(tweet) :complete #'tweet-complete-hook)
 (add-hook '(spiritual reading) :complete #'what-did-you-think-about-reading)
 
+(defun impulse ()
+  '((get time of day tasks running as a function of shortwave)))
+
 ;; &rest time
 (defun short-wave (&key ((:interval interval)) ((:for for)))
   (let ((tasks '((get coffee or tea)
                  (spiritual reading)
                  (technical reading)
+                 (tweet)
                  (improve matrix infode)
                  (think about how to get deeper into flow)
                  (improve phoenix infode)
-                 (tweet)
                  (meditate)
                  ;; do medium wave oncomplete hook
                  (bow to the short-wave)))
