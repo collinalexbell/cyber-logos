@@ -10,6 +10,7 @@
         (search in-name (wmctrl)))))
 
 (defun refocus ()
+  (sb-ext:run-program "/usr/bin/notify-send" '("do pushups"))
   (sb-ext:run-program "/usr/bin/mplayer"
                       '("media/singing_bowl.mp4"
                         "-xy" "400"
