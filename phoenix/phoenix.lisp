@@ -94,10 +94,12 @@
 (defun short-wave (&key ((:interval interval)) ((:for for)))
   (let ((tasks '((get coffee or tea)
                  (spiritual reading)
+                 (gamedesign reading)
+                 (improve game design)
                  (technical reading)
-                 (tweet)
                  (improve matrix infode)
                  (improve phoenix infode)
+                 (tweet)
                  (meditate)
                  ;; do medium wave oncomplete hook
                  (bow to the short-wave)))
