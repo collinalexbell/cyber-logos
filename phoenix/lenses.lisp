@@ -36,7 +36,9 @@
 
     ,(make-lens `(The Lens of Curiosity)
 
-                `((What questions does my game put into the players mind)
+                `(((What questions does my game put into the players mind) .
+                   ((2023-09-17) .
+                    ("What will the next API call I unlock be?")))
                   (What am I doing to make them care about these questions)
                   (What can I do to make them invent even more questions)))
 
@@ -52,6 +54,38 @@
 
     ,(make-lense `(The Lens of Problem Solving)
 
-                 `((What problems does my game ask the player to solve)
-                   (Are there hidden problems to solve that arise out of gameplay)
-                   (How can my game generate new problems that keeps the player comming back)))))
+                 `(((What problems does my game ask the player to solve) .
+                    ((2023-09-17) .
+                     ("If there is code, then there will be the problem of writing code that compiles. Also, without any guidence or puzzles, there will be the not so good problem of what to write code about.")))
+
+                   ((Are there hidden problems to solve that arise out of gameplay) .
+                    ((2023-09-17) .
+                     ("Users can invent their own games or puzzles")))
+
+                   (How can my game generate new problems that keeps the player comming back)))
+
+
+    ,(make-lense '(The Lens of the Elemental Tetrad)
+
+                 `((Is my game design using all four elements)
+                   (Could my game design be improved by enhancing elements in one or more of the categories)
+                   (Are the four elements in harmony - reinforcing each other - and working towards a common theme)))
+
+    ,(make-lense '()
+
+                 `(()
+                   ()
+                   ()))
+
+
+
+
+
+    ))
+
+
+;,(make-lense '()
+
+;             `(()
+;               ()
+;               ()))
