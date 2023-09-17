@@ -52,7 +52,7 @@
 
 
 
-    ,(make-lense `(The Lens of Problem Solving)
+    ,(make-lens `(The Lens of Problem Solving)
 
                  `(((What problems does my game ask the player to solve) .
                     ((2023-09-17) .
@@ -65,26 +65,28 @@
                    (How can my game generate new problems that keeps the player comming back)))
 
 
-    ,(make-lense '(The Lens of the Elemental Tetrad)
+    ,(make-lens '(The Lens of the Elemental Tetrad)
 
                  `((Is my game design using all four elements)
                    (Could my game design be improved by enhancing elements in one or more of the categories)
                    (Are the four elements in harmony - reinforcing each other - and working towards a common theme)))
 
-    ,(make-lense '()
+    ,(make-lens '(The Lens of Holographic Design)
+
+                 `((What elements of the game make the experience enjoyable)
+                   (What elements of the game detract from the experience)
+                   (How can I change game elements to improve the experience)))
+
+
+
+    ,(make-lens '()
 
                  `(()
                    ()
-                   ()))
+                   ()))))
 
 
-
-
-
-    ))
-
-
-;,(make-lense '()
+;,(make-lens '()
 
 ;             `(()
 ;               ()
