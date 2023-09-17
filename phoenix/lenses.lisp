@@ -38,12 +38,20 @@
 
                 `((What questions does my game put into the players mind)
                   (What am I doing to make them care about these questions)
-                  (What can I do to make them invent even more questions)))))
+                  (What can I do to make them invent even more questions)))
 
 
 
-    ,(make-lens `()
+    ,(make-lens `(The Lens of Endogenous Value)
 
-                `(()
-                  ()
-                  ()))))
+                `((What is valuable to the players of my game)
+                  (How can I make it more valuable to them)
+                  (What is the relationship between value in the game and the players motivations)))
+
+
+
+    ,(make-lense `(The Lens of Problem Solving)
+
+                 `((What problems does my game ask the player to solve)
+                   (Are there hidden problems to solve that arise out of gameplay)
+                   (How can my game generate new problems that keeps the player comming back)))))
