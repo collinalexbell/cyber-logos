@@ -3,6 +3,7 @@
 (in-package :logos.phoenix)
 
 (load "phoenix/social-media-moderation")
+(start-social-media-moderation)
 (load "phoenix/matrix")
 (defun mission ()
   '(I spend a fully pre-funded (150k) year
