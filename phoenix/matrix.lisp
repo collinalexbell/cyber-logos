@@ -25,3 +25,19 @@
     (pzmq:connect socket "tcp://localhost:5555")
     (pzmq:send socket (cube-to-str x y z))
     (pzmq:recv-string socket :dontwait t)))
+
+
+(defparameter apps
+  '(
+    ("emacs" . "emacs@phoenix")
+    ))
+
+(defun api-create-app (app x y z)
+  (format t "a ~a ~a ~a '~a' '~a'" x y z (car app) (cdr app)))
+
+(defun create-app (name x y z)
+  (let ((app (assoc name apps)))
+    (pzmq:with-socket socket :req
+      (pzmq:connect socket "tcp://localhost:5555")
+      (pzmq:send socket (api-create-app app x y z))
+      (pzmq:recv-string socket :dontwait t))))

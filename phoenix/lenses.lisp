@@ -81,16 +81,33 @@
 
 
 
-    ,(make-lens '(The Lense of Unification)
+    ,(make-lens '(The Lens of Unification)
 
-                 `((What is my theme)
+                `(((What is my theme) .
+                   (Divine/magical power beyond one's comprehension
+                                   is available to those who seek it
+                                   and learn to harmonize themselves
+                                   with the spirit of the universe))
                    (Am I using every means available to reinforce that theme)))
+
+
+
+    ,(make-lens '(The Lens of Resonance)
+
+                `((What is it about my game that feels powerful and special)
+                  (When I describe my game to people what Ideas get them really excited)
+                  (If I had no constraints of any kind what would this game be like)
+                  ((I have certian instincts about how this game should be) (What is driving those insticts))))
+
+
 
     ,(make-lens '()
 
                 `(()
                   ()
-                  ()))))
+                  ()))
+
+    ))
 
 
 
