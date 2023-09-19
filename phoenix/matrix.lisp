@@ -23,8 +23,7 @@
 (defun add-cube (x y z)
   (pzmq:with-socket socket :req
     (pzmq:connect socket "tcp://localhost:5555")
-    (pzmq:send socket (cube-to-str x y z))
-    (pzmq:recv-string socket :dontwait t)))
+    (pzmq:send socket (cube-to-str x y z))))
 
 
 (defparameter apps
