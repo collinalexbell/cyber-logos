@@ -101,11 +101,46 @@
 
 
 
+    ,(make-lens '(The Lens of Inifite Inspirtation)
+
+                `(((What is an experience I have had in my life that I want to share with others) .
+                   ((One experience is that of using emacs)
+                    (Another is the experience of nature)
+                    (Being in a park in the midst of NYC)))
+                  ((In what small way can I capture that experience and put it into my game) .
+                   ((I can use emacs colors for my game. That would be a pleasant aesthetic)
+                    (I can build environments that contrast heavily with the emacs env)
+                    (I can create a sharp and delineated distinction between
+                       the man made structures
+                       and nature)))))
+
+
+
+    ,(make-lens '(The Lens of the Problem Statement)
+
+                `(((What problems am I really trying to solve) .
+                   (I want the freedom to be creative - to study - and to build my own experience of life without a 9-5 job)
+                   (I want $$$ to be free and to live a modern tech genius life))
+                  (Have I been making assumptions about this game that really have nothing to do with its true purpose)
+                  ((Is a game really my best solution. Why) .
+                   (Yes -  everything else will feel like work)
+                   (Also I have software engineering experience and need a market to self software)
+                   (Games are a good market to seel creative software in)
+                   (Also I dont have the capital required to start a (real business)))
+
+                  ((How will I be able to tell if the problem is solved) .
+                   ((I have a digital experience that feels freeing and exciting to work on)
+                    (I have the money to work on it)))))
+
+
     ,(make-lens '()
 
                 `(()
                   ()
                   ()))
+
+
+
 
     ))
 

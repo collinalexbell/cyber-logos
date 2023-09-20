@@ -1,4 +1,5 @@
 (ql:quickload :drakma)
+(ql:quickload :local-time)
 (defpackage :logos.phoenix (:use :cl :logos.task :postmodern) (:export :short-wave-hook :tweet-complete-hook :tweet-select-hook :what-did-you-think-about-reading))
 (in-package :logos.phoenix)
 
@@ -121,13 +122,20 @@
   (add-tasks '((make coffee)
                (take dog outside))))
 
+;; implement this
+(defparameter day-of-completion-list (local-time:today))
+(defparameter time-of-day-tasks-complete '())
+(defun runnable-time-of-day-tasks ()
+  (let ((time-symbol-to-time '((:bedtime 7) (:afternoon 13) (:wake-up 10) (:evening 20))))
+    ))
 (defun time-of-day-tasks (time)
   ;; run once per time of day
   (add-tasks (cond
                ((eq time :afternoon) '((run)))
                ((eq time :wake-up) '((make-coffee) (clean) (if weekday (apply for job))))
                ((eq time :evening) '((shower)))
-               ((eq time :early-night)'((sleep) ((brush) (floss)))))))
+               ((eq time :bedtime)'((sleep) ((brush) (floss))))))
+  (setf time-of-day-tasks-complete (cons time time-of-day-tasks-complete)))
 
 (load "phoenix/cron")
 
