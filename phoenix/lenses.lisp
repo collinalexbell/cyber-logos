@@ -119,18 +119,31 @@
     ,(make-lens '(The Lens of the Problem Statement)
 
                 `(((What problems am I really trying to solve) .
-                   (I want the freedom to be creative - to study - and to build my own experience of life without a 9-5 job)
-                   (I want $$$ to be free and to live a modern tech genius life))
+                   ((I want the freedom to be creative - to study - and to build my own experience of life without a 9-5 job)
+                    (I want $$$ to be free and to live a modern tech genius life)))
                   (Have I been making assumptions about this game that really have nothing to do with its true purpose)
                   ((Is a game really my best solution. Why) .
-                   (Yes -  everything else will feel like work)
-                   (Also I have software engineering experience and need a market to self software)
-                   (Games are a good market to seel creative software in)
-                   (Also I dont have the capital required to start a (real business)))
+                   ((Yes -  everything else will feel like work)
+                    (Also I have software engineering experience and need a market to self software)
+                    (Games are a good market to seel creative software in)
+                    (Also I dont have the capital required to start a (real business))))
 
                   ((How will I be able to tell if the problem is solved) .
                    ((I have a digital experience that feels freeing and exciting to work on)
                     (I have the money to work on it)))))
+
+
+    ,(make-lens '(The Lens of the eight filters)
+
+                `((Does this game feel right)
+                  (Will the intended audience like the game enough)
+                  (Is this a well designed game)
+                  (Is the game novel enough)
+                  (Will this game sell)
+                  (Is it technically possible to build this game)
+                  (Does this game meet our social or community goals)
+                  (Do the playtesters enjoy the game enough)))
+
 
 
     ,(make-lens '()
@@ -138,7 +151,6 @@
                 `(()
                   ()
                   ()))
-
 
 
 
