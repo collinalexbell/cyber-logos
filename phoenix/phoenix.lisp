@@ -57,7 +57,8 @@
 
 (defun short-wave-hook (task)
   (if (= 0 (mod short-wave-count medium-wave-wavelength))
-      (medium-wave)))
+      (medium-wave))
+  (runnable-time-of-day-tasks))
 
 (defun tweet-select-hook (task)
   (format t "called")
@@ -92,23 +93,7 @@
 (defun impulse ()
   '((get time of day tasks running as a function of shortwave)))
 
-;(defun tasks ()
-;  (runnable-time-of-day-tasks)
-;  (logos.task:tasks))
-
-;(defun add-task (task)
-;  (logos.task:add-task task))
-
-;(defun add-tasks (tasks)
-;  (logos.task:add-tasks tasks))
-
-;(defun select (num)
-;  (runnable-time-of-day-tasks)
-;  (logos.task:select num))
-
-;(defun deselect ()
-;  (logos.task:deselect))
-
+(defun wake () (runnable-time-of-day-tasks))
 ;; &rest time
 (defun short-wave (&key ((:interval interval)) ((:for for)))
   (let ((tasks '((get coffee or tea)
@@ -147,7 +132,7 @@
       ;; its a new day
       (progn (setf day-of-completion-list (local-time:timestamp-day (local-time:today)))
              (setf time-of-day-tasks-complete '())))
-  (let ((time-symbol-to-time '((:bedtime 2) (:afternoon 13) (:wake-up 10) (:evening 20)))
+  (let ((time-symbol-to-time '((:bedtime 2) (:afternoon 17) (:wake-up 14) (:evening 21)))
         (hour (local-time:timestamp-hour (local-time:now))))
     (loop for time in time-symbol-to-time
           do (if (and (not (find (car time) time-of-day-tasks-complete))
