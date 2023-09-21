@@ -1,6 +1,6 @@
 (ql:quickload :drakma)
 (ql:quickload :local-time)
-(defpackage :logos.phoenix (:use :cl :logos.task :postmodern) (:export :short-wave-hook :tweet-complete-hook :tweet-select-hook :what-did-you-think-about-reading))
+(defpackage :logos.phoenix (:use :cl :postmodern :logos.task) (:export :short-wave-hook :tweet-complete-hook :tweet-select-hook :what-did-you-think-about-reading))
 (in-package :logos.phoenix)
 
 (load "phoenix/social-media-moderation")
@@ -84,13 +84,30 @@
 (defun what-did-you-think-about-reading (task)
   (open-in-buffer "~/notes/spiritual-reading-thoughts"))
 
-(add-hook '(bow to the short-wave) :complete #'short-wave-hook)
-(add-hook '(tweet) :select #'tweet-select-hook)
-(add-hook '(tweet) :complete #'tweet-complete-hook)
-(add-hook '(spiritual reading) :complete #'what-did-you-think-about-reading)
+(logos.task:add-hook '(bow to the short-wave) :complete #'short-wave-hook)
+(logos.task:add-hook '(tweet) :select #'tweet-select-hook)
+(logos.task:add-hook '(tweet) :complete #'tweet-complete-hook)
+(logos.task:add-hook '(spiritual reading) :complete #'what-did-you-think-about-reading)
 
 (defun impulse ()
   '((get time of day tasks running as a function of shortwave)))
+
+;(defun tasks ()
+;  (runnable-time-of-day-tasks)
+;  (logos.task:tasks))
+
+;(defun add-task (task)
+;  (logos.task:add-task task))
+
+;(defun add-tasks (tasks)
+;  (logos.task:add-tasks tasks))
+
+;(defun select (num)
+;  (runnable-time-of-day-tasks)
+;  (logos.task:select num))
+
+;(defun deselect ()
+;  (logos.task:deselect))
 
 ;; &rest time
 (defun short-wave (&key ((:interval interval)) ((:for for)))
@@ -136,6 +153,7 @@
           do (if (and (not (find (car time) time-of-day-tasks-complete))
                       (>= hour (cadr time)))
                  (time-of-day-tasks (car time))))))
+
 (defun time-of-day-tasks (time)
   ;; run once per time of day
   (add-tasks (cond
