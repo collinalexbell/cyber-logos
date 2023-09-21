@@ -123,11 +123,19 @@
                (take dog outside))))
 
 ;; implement this
-(defparameter day-of-completion-list (local-time:today))
+(defparameter day-of-completion-list (local-time:timestamp-day (local-time:today)))
 (defparameter time-of-day-tasks-complete '())
 (defun runnable-time-of-day-tasks ()
-  (let ((time-symbol-to-time '((:bedtime 7) (:afternoon 13) (:wake-up 10) (:evening 20))))
-    ))
+  (if (not (= (local-time:timestamp-day (local-time:today)) day-of-completion-list))
+      ;; its a new day
+      (progn (setf day-of-completion-list (local-time:timestamp-day (local-time:today)))
+             (setf time-of-day-tasks-complete '())))
+  (let ((time-symbol-to-time '((:bedtime 2) (:afternoon 13) (:wake-up 10) (:evening 20)))
+        (hour (local-time:timestamp-hour (local-time:now))))
+    (loop for time in time-symbol-to-time
+          do (if (and (not (find (car time) time-of-day-tasks-complete))
+                      (>= hour (cadr time)))
+                 (time-of-day-tasks (car time))))))
 (defun time-of-day-tasks (time)
   ;; run once per time of day
   (add-tasks (cond
