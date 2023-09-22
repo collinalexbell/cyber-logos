@@ -146,11 +146,30 @@
 
 
 
+    ,(make-lens '(The Lens of Risk Mitigation)
+
+                `(((What could stop this game from being great) .
+                   ((The game isnt good enough by funding time to get funding))
+                   )
+                  ((How can I stop this from happening) .
+                   ((Make the game good enough by getting deeper into flow)))))
+
+
+    ,(make-lens '(The Lens of the Toy)
+
+                `((If my game had no goal would it be fun at all - If not how can I change that)
+                  (When people see my game - do they want to start interacting with it - Even before they know what to do - If not how do I change that)))
+
+
+
+
     ,(make-lens '()
 
                 `(()
                   ()
                   ()))
+
+
 
 
 
