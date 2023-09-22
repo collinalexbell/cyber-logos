@@ -5,8 +5,8 @@
 (defpackage :logos.phoenix.matrix (:use :cl) (:export :add-cube :add-a-logos))
 (in-package :logos.phoenix.matrix)
 
-(defun cube-to-str (x y z)
-  (format nil "c ~a ~a ~a" x y z))
+(defun cube-to-str (x y z shader)
+  (format nil "c ~a ~a ~a ~a" x y z shader))
 
 (defun add-a-logos (a-logos x y z)
   (add-cube x y z)
@@ -20,10 +20,10 @@
 
 (defparameter cubelist '())
 
-(defun add-cube (x y z)
+(defun add-cube (x y z shader)
   (pzmq:with-socket socket :req
     (pzmq:connect socket "tcp://localhost:5555")
-    (pzmq:send socket (cube-to-str x y z))))
+    (pzmq:send socket (cube-to-str x y z shader))))
 
 
 (defparameter apps
