@@ -162,6 +162,13 @@
 
 
 
+    ,(make-lens '(The Lens of the Player)
+
+                `((In general - what do they like)
+                  (What dont they like and why)
+                  (What do they expect to see in a game)
+                  (If I were in their place - what would I want to see in a game)
+                  (What would they like or dislike about my game in particular)))
 
     ,(make-lens '()
 
