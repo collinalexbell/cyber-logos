@@ -48,10 +48,10 @@
       (pzmq:recv-string socket :dontwait t))))
 
 
-(defun tron-hell ()
+(defun tron-home ()
   (pzmq:with-socket socket :req
     (pzmq:connect socket "tcp://localhost:5555")
-    (loop for z from -10 to 15 by 0.1
+    (loop for z from -1 to 1 by 0.1
           do (progn
                (pzmq:send
                socket
@@ -65,4 +65,24 @@
                                                                    (add-cube* -0.6 i z 0)))
                          (loop for i from -0.6 to 0.6 by 0.1 collect
                                                              (add-cube* i 0.4 z 0))))))
+               (pzmq:recv-string socket)))
+    (loop for z from -1 to 1 by 0.1
+          do (progn
+               (pzmq:send
+                socket
+                (format nil "~{~A~^~%~}"
+                        (alexandria:flatten
+                         (list
+                          (loop for i from -2 to -0.6 by 0.1 collect (add-cube* i -0.5 z 3))
+                          (loop for i from 0.6 to 2 by 0.1 collect (add-cube* i -0.5 z 3))))))
+               (pzmq:recv-string socket)))
+    (loop for i from -2 to 2 by 0.1
+          do (progn
+               (pzmq:send
+                socket
+                (format nil "~{~A~^~%~}"
+                        (alexandria:flatten
+                         (list
+                          (loop for z from -2 to -1 by 0.1 collect (add-cube* i -0.5 z 3))
+                          (loop for z from 1 to 2 by 0.1 collect (add-cube* i -0.5 z 3))))))
                (pzmq:recv-string socket)))))
