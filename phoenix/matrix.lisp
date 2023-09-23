@@ -1,4 +1,5 @@
 (ql:quickload :cffi)
+(ql:quickload :alexandria)
 ;; it couldn't find the shared lib on Ubutu
 (push "/usr/local/lib/" cffi:*foreign-library-directories*)
 (ql:quickload :pzmq)
@@ -25,8 +26,8 @@
     (pzmq:connect socket "tcp://localhost:5555")
     (pzmq:send socket (cube-to-str x y z shader))))
 
-(defmacro add-cube* (socket x y z shader)
-    `(pzmq:send ,socket (cube-to-str ,x ,y ,z ,shader)))
+(defun add-cube* (x y z shader)
+  (cube-to-str x y z shader))
 
 
 
@@ -48,12 +49,20 @@
 
 
 (defun tron-hell ()
+  (pzmq:with-socket socket :req
+    (pzmq:connect socket "tcp://localhost:5555")
     (loop for z from -10 to 15 by 0.1
           do (progn
-               (loop for i from -0.6 to 0.6 by 0.1 do
-                 (add-cube i -0.5 z 1))
-               (loop for i from -0.5 to 0.4 by 0.1 do
-                 (progn (add-cube 0.6 i z 0)
-                        (add-cube -0.6 i z 0)))
-               (loop for i from -0.6 to 0.6 by 0.1 do
-                 (add-cube i 0.4 z 0)))))
+               (pzmq:send
+               socket
+               (format nil "~{~A~^~%~}"
+                       (alexandria:flatten
+                        (list
+                         (loop for i from -0.6 to 0.6 by 0.1 collect
+                                                             (add-cube* i -0.5 z 1))
+                         (loop for i from -0.5 to 0.4 by 0.1 collect
+                                                             (list (add-cube* 0.6 i z 0)
+                                                                   (add-cube* -0.6 i z 0)))
+                         (loop for i from -0.6 to 0.6 by 0.1 collect
+                                                             (add-cube* i 0.4 z 0))))))
+               (pzmq:recv-string socket)))))
