@@ -25,6 +25,11 @@
     (pzmq:connect socket "tcp://localhost:5555")
     (pzmq:send socket (cube-to-str x y z shader))))
 
+(defmacro add-cube* (socket x y z shader)
+    `(pzmq:send ,socket (cube-to-str ,x ,y ,z ,shader)))
+
+
+
 
 (defparameter apps
   '(
@@ -40,3 +45,15 @@
       (pzmq:connect socket "tcp://localhost:5555")
       (pzmq:send socket (api-create-app app x y z))
       (pzmq:recv-string socket :dontwait t))))
+
+
+(defun tron-hell ()
+    (loop for z from -10 to 15 by 0.1
+          do (progn
+               (loop for i from -0.6 to 0.6 by 0.1 do
+                 (add-cube i -0.5 z 1))
+               (loop for i from -0.5 to 0.4 by 0.1 do
+                 (progn (add-cube 0.6 i z 0)
+                        (add-cube -0.6 i z 0)))
+               (loop for i from -0.6 to 0.6 by 0.1 do
+                 (add-cube i 0.4 z 0)))))
