@@ -99,9 +99,9 @@
             (progn
               (tron-home)))))))
 
-(defun init-server ()
-  (let ((world-server-thread (sb-thread:make-thread #'init-server-fn)))
+(defun world-init-server ()
+  (let ((world-init-server-thread (sb-thread:make-thread #'init-server-fn)))
     (defun stop-world-init-server ()
-      (sb-thread:terminate-thread world-server-thread))))
+      (sb-thread:terminate-thread world-init-server-thread))))
 
-(init-server)
+(world-init-server)
