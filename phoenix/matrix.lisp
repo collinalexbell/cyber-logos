@@ -29,9 +29,6 @@
 (defun add-cube* (x y z shader)
   (cube-to-str x y z shader))
 
-
-
-
 (defparameter apps
   '(
     ("emacs" . "emacs@phoenix")
@@ -86,3 +83,25 @@
                           (loop for z from -2 to -1 by 0.1 collect (add-cube* i -0.5 z 3))
                           (loop for z from 1 to 2 by 0.1 collect (add-cube* i -0.5 z 3))))))
                (pzmq:recv-string socket)))))
+
+
+
+(defun strip-null-bytes (str)
+  (remove #\null str))
+
+(defun init-server-fn ()
+  (pzmq:with-socket rep-socket :rep
+    (pzmq:bind rep-socket "tcp://*:5556")
+    (loop do
+      (let ((data (strip-null-bytes (pzmq:recv-string rep-socket))))
+        (pzmq:send rep-socket "gotit")
+        (if (equal data "init")
+            (progn
+              (tron-home)))))))
+
+(defun init-server ()
+  (let ((world-server-thread (sb-thread:make-thread #'init-server-fn)))
+    (defun stop-world-init-server ()
+      (sb-thread:terminate-thread world-server-thread))))
+
+(init-server)
