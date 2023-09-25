@@ -132,7 +132,7 @@
       ;; its a new day
       (progn (setf day-of-completion-list (local-time:timestamp-day (local-time:today)))
              (setf time-of-day-tasks-complete '())))
-  (let ((time-symbol-to-time '((:bedtime 1) (:afternoon 17) (:wake-up 14) (:evening 21)))
+  (let ((time-symbol-to-time '((:bedtime 10) (:afternoon 17) (:wake-up 14) (:evening 21)))
         (hour (local-time:timestamp-hour (local-time:now))))
     (loop for time in time-symbol-to-time
           do (if (and (not (find (car time) time-of-day-tasks-complete))
