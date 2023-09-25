@@ -170,11 +170,18 @@
                   (If I were in their place - what would I want to see in a game)
                   (What would they like or dislike about my game in particular)))
 
+    ,(make-lens '(The Lens of Pleasure)
+
+                `((What pleasures does your game give to players - Can these be improved)
+                  (What pleasures are missing from your experience - Why - Can they be added)))
+
+
     ,(make-lens '()
 
                 `(()
                   ()
                   ()))
+
 
 
 
