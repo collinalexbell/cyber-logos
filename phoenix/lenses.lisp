@@ -176,11 +176,22 @@
                   (What pleasures are missing from your experience - Why - Can they be added)))
 
 
+    ,(make-lens '(The Lens of Flow)
+
+                `((Does the game have clear goals - If not how can I fix that)
+                  (Are the goals of the player the same goals I intend)
+                  (Are there parts of the game that distract the player to the point that they forget the goal - If so can these distractions be reduced or tied to the game goal )
+                  (Does my game provide a steady stream of  not-to-easy not-to-hard challenges - taking into account the fact that the players skills may be gradually improving)
+                  (Are the players skills improving at the rate I had hoped)))
+
+
+
     ,(make-lens '()
 
                 `(()
                   ()
                   ()))
+
 
 
 
