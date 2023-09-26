@@ -31,6 +31,8 @@
   '(((when I feel defeated about the complexity of things) . ((meditate to rise above them)
                                                               (have faith in the universe)
                                                               (keep going to the best of my ability)))))
+(defun print-strategies (task)
+  (format t "~a" (strategies)))
 
 (defun digital-seal-of-solomon ()
   (logos.phoenix.matrix:add-cube 0 5 -20)
@@ -89,6 +91,7 @@
 (logos.task:add-hook '(tweet) :select #'tweet-select-hook)
 (logos.task:add-hook '(tweet) :complete #'tweet-complete-hook)
 (logos.task:add-hook '(spiritual reading) :complete #'what-did-you-think-about-reading)
+(logos.task:add-hook '(meditate) :select #'print-strategies)
 
 (defun impulse ()
   '((get time of day tasks running as a function of shortwave)))
