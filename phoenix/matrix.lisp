@@ -44,9 +44,8 @@
       (pzmq:send socket (api-create-app app x y z))
       (pzmq:recv-string socket :dontwait t))))
 
-;; all values represent world coordinates. This will cross multiple chunks, lol
-(defun tron-home (&optional (offset-x 0) (offset-z 0) (material 0))
-  (labels ((add-cube+* (x y z mat) (add-cube* (+ x offset-x) y (+ z offset-z) mat)))
+(defun tron-home (&optional (offset-x 0) (offset-y 0) (offset-z 0) (material 0))
+  (labels ((add-cube+* (x y z mat) (add-cube* (+ x offset-x) (+ y offset-y) (+ z offset-z) mat)))
    (pzmq:with-socket socket :req
      (pzmq:connect socket "tcp://localhost:5555")
      (loop for z from -10 to 10
@@ -98,7 +97,7 @@
         (pzmq:send rep-socket "gotit")
         (if (equal data "init")
             (progn
-              (tron-home)))))))
+              (tron-home 40 10 40)))))))
 
 (defun world-init-server ()
   (let ((world-init-server-thread (sb-thread:make-thread #'init-server-fn)))
