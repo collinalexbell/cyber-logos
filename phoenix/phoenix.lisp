@@ -59,7 +59,8 @@
 (defun short-wave-hook (task)
   (if (= 0 (mod short-wave-count medium-wave-wavelength))
       (medium-wave))
-  (runnable-time-of-day-tasks))
+  (runnable-time-of-day-tasks)
+  (stop-social-media-moderation))
 
 (defun tweet-select-hook (task)
   (format t "called")
@@ -124,6 +125,7 @@
             (if (not (null subtasks))
                 (format t "has subtasks")))))
 
+  (start-social-media-moderation)
   (format t "Short waves ran: ~a~%" (incf short-wave-count)))
 
 (defparameter medium-wave-wavelength 2)
