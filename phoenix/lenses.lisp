@@ -186,11 +186,20 @@
 
 
 
+    ,(make-lens '(The Lens of Needs)
+
+                `((On which levels of Maslows hierarchy is my game operating on)
+                  (How can I make my game fulfill more basic needs than it already is)
+                  (On the levels my game is operating - how can I make it fulfill those needs even better)))
+
+
+
     ,(make-lens '()
 
                 `(()
                   ()
                   ()))
+
 
 
 
