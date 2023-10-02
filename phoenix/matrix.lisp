@@ -14,15 +14,15 @@
 (defun add-cube* (x y z shader)
   (cube-to-str x y z shader))
 
-(defun add-a-logos (a-logos x y z)
-  (add-cube x y z)
+(defun add-a-logos (a-logos x y z shader)
+  (add-cube x y z shader)
   (let ((inferiors (logos:inferior-logoss a-logos)))
     (loop for logos in inferiors
           for inferior-x from (* -3 (floor (length inferiors) 2)) to (* 3 (ceiling (length inferiors) 2)) :by 3
           do
              (progn
                (prin1 `(add-cube ,inferior-x ,(- y 3) ,z))
-               (add-cube inferior-x (- y 3) z)))))
+               (add-cube inferior-x (- y 3) z shader)))))
 
 (defparameter apps
   '(
