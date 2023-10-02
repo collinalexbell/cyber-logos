@@ -5,7 +5,6 @@
 
 (load "phoenix/social-media-moderation")
 (start-social-media-moderation)
-(load "phoenix/matrix")
 (defun mission ()
   '(I spend a fully pre-funded (150k) year
     (studying planning designing and implementing
@@ -32,15 +31,15 @@
                                                               (have faith in the universe)
                                                               (keep going to the best of my ability)))))
 (defun print-strategies (task)
-  (format t "~a" (strategies)))
+  (format t "~a~%~%" (strategies)))
 
 (defun digital-seal-of-solomon ()
-  (logos.phoenix.matrix:add-cube 0 5 -20)
-  (logos.phoenix.matrix:add-cube 0 -5 -20)
-  (logos.phoenix.matrix:add-cube 5 -2 -20)
-  (logos.phoenix.matrix:add-cube -5 -2 -20)
-  (logos.phoenix.matrix:add-cube 5 2 -20)
-  (logos.phoenix.matrix:add-cube -5 2 -20)
+  (logos.phoenix.matrix:add-cube 0 5 -20 0)
+  (logos.phoenix.matrix:add-cube 0 -5 -20 0)
+  (logos.phoenix.matrix:add-cube 5 -2 -20 0)
+  (logos.phoenix.matrix:add-cube -5 -2 -20 0)
+  (logos.phoenix.matrix:add-cube 5 2 -20 0)
+  (logos.phoenix.matrix:add-cube -5 2 -20 0)
   '((top-node (potential and being))
     (upper-triangle-horiz (left-right progress bar))
     (bottom-node (opprotunity-cost and scrifice))))
@@ -90,7 +89,7 @@
 (logos.task:add-hook '(bow to the short-wave) :complete #'short-wave-hook)
 (logos.task:add-hook '(tweet) :select #'tweet-select-hook)
 (logos.task:add-hook '(tweet) :complete #'tweet-complete-hook)
-(logos.task:add-hook '(spiritual reading) :complete #'what-did-you-think-about-reading)
+(logos.task:add-hook '(spiritual reading) :select #'what-did-you-think-about-reading)
 (logos.task:add-hook '(meditate) :select #'print-strategies)
 
 (defun impulse ()
@@ -99,25 +98,31 @@
 (defun wake () (runnable-time-of-day-tasks))
 ;; &rest time
 (defun short-wave (&key ((:interval interval)) ((:for for)))
-  (let ((tasks '((get coffee or tea)
+  (let ((tasks '((meditate)
+                 (get coffee or tea)
                  (spiritual reading)
                  (gamedesign reading)
                  (improve game design)
                  (technical reading)
-                 (improve matrix infode)
-                 (improve phoenix infode)
+                 (with-subtasks (improve matrix infode)
+                   (git-commit))
+                 (with-subtasks (improve phoenix infode)
+                   (git-commit))
                  (tweet)
-                 (meditate)
                  ;; do medium wave oncomplete hook
                  (bow to the short-wave)))
 
         (interval-insert (if interval `((for ,interval minutes)) nil)))
         (loop for task in (reverse tasks) do
-          (let ((task-with-metadata `(,@task
-                                      ,@(if (or (eq for :all)
-                                                (find task for :test #'equal))
-                                            interval-insert))))
-            (add-task task-with-metadata))))
+          (let* ((subtasks (if (eq (car task) 'with-subtasks) (remove-if-not #'listp (cddr task))))
+                (task (if (null subtasks) task (cadr task)))
+                (task-with-metadata `(,@task
+                                       ,@(if (or (eq for :all)
+                                                 (find task for :test #'equal))
+                                             interval-insert))))
+            (add-task task-with-metadata)
+            (if (not (null subtasks))
+                (format t "has subtasks")))))
 
   (format t "Short waves ran: ~a~%" (incf short-wave-count)))
 
@@ -151,5 +156,4 @@
                ((eq time :bedtime)'((sleep) ((brush) (floss))))))
   (setf time-of-day-tasks-complete (cons time time-of-day-tasks-complete)))
 
-(load "phoenix/cron")
 
