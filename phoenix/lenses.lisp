@@ -194,11 +194,13 @@
 
 
 
-    ,(make-lens '()
+    ,(make-lens '(The Lense of Judgement)
 
-                `(()
-                  ()
-                  ()))
+                `((What does your game judge about the player)
+                  (How does it communicate this judgement)
+                  (Do players feel that this judgement is fair)
+                  (Do they care about the judgement)
+                  (Does this judgement make them want to improve)))
 
 
 
