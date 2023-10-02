@@ -1,23 +1,8 @@
-(ql:quickload :cffi)
-(ql:quickload :alexandria)
-;; it couldn't find the shared lib on Ubutu
-(push "/usr/local/lib/" cffi:*foreign-library-directories*)
-(ql:quickload :pzmq)
 (defpackage :logos.phoenix.matrix (:use :cl) (:export :add-cube :add-a-logos))
 (in-package :logos.phoenix.matrix)
 
 (defun cube-to-str (x y z shader)
   (format nil "c ~a ~a ~a ~a" x y z shader))
-
-(defun add-a-logos (a-logos x y z)
-  (add-cube x y z)
-  (let ((inferiors (logos:inferior-logoss a-logos)))
-   (loop for logos in inferiors
-         for inferior-x from (* -3 (floor (length inferiors) 2)) to (* 3 (ceiling (length inferiors) 2)) :by 3
-         do
-            (progn
-              (prin1 `(add-cube ,inferior-x ,(- y 3) ,z))
-              (add-cube inferior-x (- y 3) z)))))
 
 (defparameter cubelist '())
 
@@ -28,6 +13,16 @@
 
 (defun add-cube* (x y z shader)
   (cube-to-str x y z shader))
+
+(defun add-a-logos (a-logos x y z)
+  (add-cube x y z)
+  (let ((inferiors (logos:inferior-logoss a-logos)))
+    (loop for logos in inferiors
+          for inferior-x from (* -3 (floor (length inferiors) 2)) to (* 3 (ceiling (length inferiors) 2)) :by 3
+          do
+             (progn
+               (prin1 `(add-cube ,inferior-x ,(- y 3) ,z))
+               (add-cube inferior-x (- y 3) z)))))
 
 (defparameter apps
   '(
@@ -103,5 +98,3 @@
   (let ((world-init-server-thread (sb-thread:make-thread #'init-server-fn)))
     (defun stop-world-init-server ()
       (sb-thread:terminate-thread world-init-server-thread))))
-
-(world-init-server)
