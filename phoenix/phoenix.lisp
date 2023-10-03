@@ -97,24 +97,28 @@
   '((get time of day tasks running as a function of shortwave)))
 
 (defun wake () (runnable-time-of-day-tasks))
-;; &rest time
-(defun short-wave (&key ((:interval interval)) ((:for for)))
-  (let ((tasks '((meditate)
-                 (get coffee or tea)
-                 (spiritual reading)
-                 (gamedesign reading)
-                 (improve game design)
-                 (technical reading)
-                 (with-subtasks (improve matrix infode)
-                   (git-commit))
-                 (with-subtasks (improve phoenix infode)
-                   (git-commit))
-                 (tweet)
-                 ;; do medium wave oncomplete hook
-                 (bow to the short-wave)))
 
-        (interval-insert (if interval `((for ,interval minutes)) nil)))
-        (loop for task in (reverse tasks) do
+
+
+(defun short-wave-tasks ()
+  (reverse
+   '((meditate)
+     (get coffee or tea)
+     (spiritual reading)
+     (gamedesign reading)
+     (improve game design)
+     (technical reading)
+     (with-subtasks (improve matrix infode)
+       (git-commit))
+     (with-subtasks (improve phoenix infode)
+       (git-commit))
+     (tweet)
+     ;; do medium wave oncomplete hook
+     (bow to the short-wave))))
+
+(defun short-wave (&key ((:interval interval)) ((:for for)))
+  (let ((interval-insert (if interval `((for ,interval minutes)) nil)))
+        (loop for task in (short-wave-tasks) do
           (let* ((subtasks (if (eq (car task) 'with-subtasks) (remove-if-not #'listp (cddr task))))
                 (task (if (null subtasks) task (cadr task)))
                 (task-with-metadata `(,@task
