@@ -126,8 +126,10 @@
                                                  (find task for :test #'equal))
                                              interval-insert))))
             (add-task task-with-metadata)
-            (if (not (null subtasks))
-                (format t "has subtasks")))))
+            (if (and (not (null subtasks))
+                     (not (null (find-task task-with-metadata))))
+                  (loop for subtask in subtasks do
+                    (add-task subtask :parent (find-task task-with-metadata)))))))
 
   (start-social-media-moderation)
   (format t "Short waves ran: ~a~%" (incf short-wave-count)))
