@@ -203,11 +203,14 @@
                   (Does this judgement make them want to improve)))
 
 
+    ,(make-lens '(The Lens of Functional Space)
 
-
-
-
-
+                `((Is the space of this game discrete or continuous?)
+                  (How many dimensions does it have?)
+                  (What are the boundaries of the space?)
+                  (Are there sub spaces? How are they connected?)
+                  (Is there more than one way to abstractly model the space in this game?)))
+    
 
     ))
 
