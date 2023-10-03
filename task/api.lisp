@@ -65,8 +65,5 @@
   (print-current-groups))
 
 
-(defun find-task () ; to be implemented
-  )
-
 (defun add-to-every (item)
   (if (listp item) (loop for i from 0 to (length (inferior-logoss *selected-task*)) do (progn (select i) (a item) (deselect)))))
