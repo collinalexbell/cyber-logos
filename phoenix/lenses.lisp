@@ -223,6 +223,15 @@
                   (Would changing who knows the state improve the game in some way ?)))
 
 
+    ,(make-lens '(The Lens of Emergence)
+
+                `((How many verbs do my players have ?)
+                  (How many objects can each verb act on ?)
+                  (How many ways can players acheive their goals ?)
+                  (How many subjects do the players control ?)
+                  (How do side effects change constraints ?)))
+
+
     ))
 
 
