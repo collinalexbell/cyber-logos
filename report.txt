@@ -1,23 +1,20 @@
-     100 files     102 text files.
-classified 76 files      76 unique files.                              
-     127 files ignored.
+     100 files     118 text files.
+classified 115 filesDuplicate file check 115 files (108 known unique)Unique:      100 files                                               115 unique files.                              
+Counting:  100      39 files ignored.
 
-github.com/AlDanial/cloc v 1.96  T=0.08 s (917.6 files/s, 37126.0 lines/s)
+github.com/AlDanial/cloc v 1.90  T=0.05 s (1798.3 files/s, 65244.0 lines/s)
 --------------------------------------------------------------------------------
 Language                      files          blank        comment           code
 --------------------------------------------------------------------------------
-Lisp                             37            207             35            895
-HTML                              1            109             35            714
-Python                            9            104              1            362
-OpenSCAD                         10            112             43            274
-JavaScript                        1              0              0             62
-Markdown                          7             13              0             41
-Text                              2              1              0             24
-JSON                              2             11              0             20
-Bourne Again Shell                2              1              0              5
+Lisp                             53            409             63           1600
+Python                           14            125              1            470
+Markdown                          5             51              0             82
+C++                               2             20             12             76
+C/C++ Header                      2              4              0             27
+INI                               1              2              9              8
+Bourne Again Shell                3              1              0              7
+JSON                              1              0              0              6
 Bourne Shell                      1              0              0              2
-CSS                               2              0              0              2
-SVG                               2              0              0              2
 --------------------------------------------------------------------------------
-SUM:                             76            558            114           2403
+SUM:                             82            612             85           2278
 --------------------------------------------------------------------------------
