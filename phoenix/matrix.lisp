@@ -1,4 +1,5 @@
-(defpackage :logos.phoenix.matrix (:use :cl) (:export :add-cube :add-a-logos))
+(defpackage :logos.phoenix.matrix (:use :cl)
+            (:export :add-cube :add-a-logos :world-init-server :stop-world-init-server))
 (in-package :logos.phoenix.matrix)
 
 (defun cube-to-str (x y z shader)
