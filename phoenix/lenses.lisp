@@ -210,7 +210,6 @@
                   (What are the boundaries of the space?)
                   (Are there sub spaces? How are they connected?)
                   (Is there more than one way to abstractly model the space in this game?)))
-    
 
     ))
 
