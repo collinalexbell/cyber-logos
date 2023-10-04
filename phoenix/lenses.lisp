@@ -211,6 +211,18 @@
                   (Are there sub spaces? How are they connected?)
                   (Is there more than one way to abstractly model the space in this game?)))
 
+    ,(make-lens '(The Lens of Dynamic State)
+
+                `((What are the objects of my game ?)
+                  (What are the attributes of the objects ?)
+                  (What are the possible states for each attribute ?)
+                  (What triggers the state change for each attribute ?)
+                  (What state is known by the game only ?)
+                  (What state is known by all players ? )
+                  (What state is known by some or only one player ?)
+                  (Would changing who knows the state improve the game in some way ?)))
+
+
     ))
 
 
