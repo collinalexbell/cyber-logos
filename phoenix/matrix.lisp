@@ -5,6 +5,9 @@
 (defun cube-to-str (x y z shader)
   (format nil "c ~a ~a ~a ~a" x y z shader))
 
+(defun rm-to-str (x y z )
+  (format nil "r ~a ~a ~a" x y z))
+
 (defparameter cubelist '())
 
 (defun add-cube (x y z shader)
@@ -14,6 +17,14 @@
 
 (defun add-cube* (x y z shader)
   (cube-to-str x y z shader))
+
+(defun remove-cube (x y z)
+  (pzmq:with-socket socket :req
+    (pzmq:connect socket "tcp://localhost:5555")
+    (pzmq:send socket (rm-to-str x y z))))
+
+(defun remove-cube* (x y z)
+  (rm-to-str x y z))
 
 (defun add-a-logos (a-logos x y z shader)
   (add-cube x y z shader)
