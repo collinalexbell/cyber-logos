@@ -232,6 +232,19 @@
                   (How do side effects change constraints ?)))
 
 
+
+    ,(make-lens '(The Lens of Action)
+
+                `((What are the operational actions in my game?)
+                  (What are the resultant actions?)
+                  (What resultant actions would I like to see?
+                        How could I change the game to make those possible?)
+                  (Am I happy with the ratio of resultant to operational actions)
+                  (What actions do players wish they could do in my game that they cannot?
+                        Can I somehow enable these - either as operation or resultant action)))
+
+
+
     ))
 
 
