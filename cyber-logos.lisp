@@ -5,6 +5,7 @@
 ;This will eventually be the main entry point to the executable
 ;For now, just show the capabilities
 (defun cyber-logos ()
+  (print-stats)
   '((classes (Logos Task Vitue))
     (packages (:logos :logos.task))))
 
@@ -43,7 +44,7 @@
   (get-source-files-for-dir "./"))
 
 (defun only-lisp-files (files)
-  (filter #'(lambda (item) (equal (pathname-type item) "lisp")) files))
+  (remove-if-not #'(lambda (item) (equal (pathname-type item) "lisp")) files))
 
 
 (defun get-source-files-for-dir (dir)
