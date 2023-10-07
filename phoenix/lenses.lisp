@@ -245,7 +245,23 @@
 
 
 
-    ))
+    ,(make-lens '(The Lens of Goals)
+
+                `((What is the ultimate goal of my game?)
+                  (Is that goal clear to players?)
+                  (If there is a series of goals - do the players understand that ? )
+                  (Are the different goals related to each other in a meaningful way ? )
+                  (Are my goals concrete - achievable - rewarding ? )
+                  (Do players have a chance to decide on their own goals ? )))
+
+    ,(make-lens '(The Lens of Rules)
+
+                `((What are the foundational rules of my game? How do these differ from the operational rules? )
+                  (Are there laws or house rules that are forming as the game develops? Should these be incroprated into my game directly? )
+                  (Are there different modes in my game? Do these modes make things simpler - or more complex? Would the game be better with fewer modes? More modes? )
+                  (Who enforeces the rules)
+                  (Are the rules easy to understand - or is there confusion about them? If there is confusion - should I fix it by changing the rules or by explaining them more clearly? ))
+                )))
 
 
 
