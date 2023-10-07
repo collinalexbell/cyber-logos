@@ -92,6 +92,17 @@
                 (pzmq:recv-string socket))))))
 
 
+(defun digital-seal-of-solomon ()
+  (add-cube 0 5 -20 0)
+  (add-cube 0 -5 -20 0)
+  (add-cube 5 -2 -20 0)
+  (add-cube -5 -2 -20 0)
+  (add-cube 5 2 -20 0)
+  (add-cube -5 2 -20 0)
+  '((top-node (potential and being))
+    (upper-triangle-horiz (left-right progress bar))
+    (bottom-node (opprotunity-cost and scrifice))))
+
 
 (defun strip-null-bytes (str)
   (remove #\null str))

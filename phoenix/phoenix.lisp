@@ -33,17 +33,6 @@
 (defun print-strategies (task)
   (format t "~a~%~%" (strategies)))
 
-(defun digital-seal-of-solomon ()
-  (logos.phoenix.matrix:add-cube 0 5 -20 0)
-  (logos.phoenix.matrix:add-cube 0 -5 -20 0)
-  (logos.phoenix.matrix:add-cube 5 -2 -20 0)
-  (logos.phoenix.matrix:add-cube -5 -2 -20 0)
-  (logos.phoenix.matrix:add-cube 5 2 -20 0)
-  (logos.phoenix.matrix:add-cube -5 2 -20 0)
-  '((top-node (potential and being))
-    (upper-triangle-horiz (left-right progress bar))
-    (bottom-node (opprotunity-cost and scrifice))))
-
 (defparameter commitments
   '((every time the distraction bell rings - do 5 pushups)))
 
