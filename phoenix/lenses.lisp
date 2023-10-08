@@ -261,7 +261,23 @@
                   (Are there different modes in my game? Do these modes make things simpler - or more complex? Would the game be better with fewer modes? More modes? )
                   (Who enforeces the rules)
                   (Are the rules easy to understand - or is there confusion about them? If there is confusion - should I fix it by changing the rules or by explaining them more clearly? ))
-                )))
+                )
+
+
+    ,(make-lens '(The Lens of Skill)
+
+                `((What skills does my game require from the player ? )
+                  (Are there categories of skill that this game is missing ? )
+                  (Which skills are dominant ? )
+                  (Are these skills creating the experience I want ? )
+                  (Are some players much better at these skills than others ? )
+                  (Does this make the game feel unfail ?)
+                  "Can players improve their skils with practice?"
+                  "Does this game demand the right level of skill"?
+                  ))
+
+
+    ))
 
 
 
