@@ -99,16 +99,22 @@
      ;; do medium wave oncomplete hook
      (bow to the short-wave))))
 
+(defun add-medatadata (task interval-insert for)
+  `(,@task
+    ,@(if (or (eq for :all)
+              (find task for :test #'equal))
+          interval-insert)))
+
 (defun short-wave (&key ((:interval interval)) ((:for for)))
   (let ((interval-insert (if interval `((for ,interval minutes)) nil)))
+
         (loop for task in (short-wave-tasks) do
           (let* ((subtasks (if (eq (car task) 'with-subtasks) (remove-if-not #'listp (cddr task))))
                 (task (if (null subtasks) task (cadr task)))
-                (task-with-metadata `(,@task
-                                       ,@(if (or (eq for :all)
-                                                 (find task for :test #'equal))
-                                             interval-insert))))
+                (task-with-metadata (add-medatadata task interval-insert for)))
+
             (add-task task-with-metadata)
+
             (if (and (not (null subtasks))
                      (not (null (find-task task-with-metadata))))
                   (loop for subtask in subtasks do
