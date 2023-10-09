@@ -273,8 +273,13 @@
                   (Are some players much better at these skills than others ? )
                   (Does this make the game feel unfail ?)
                   "Can players improve their skils with practice?"
-                  "Does this game demand the right level of skill"?
+                  "Does this game demand the right level of skill"
                   ))
+    ,(make-lens '(The Lens of Expected Value)
+                `("What is the actual chance of a certian event occuring?"
+                  "What is the percieved chanc?"
+                  "What value does the outcome of that event have? Can the value be quantified/ Are there intangible aspects of value that I am not considering?"
+                  "Each action a player can take has a different expected value when I add up all the possible outcomes. Am I happy with these values? Do they give the player interesting choices? Are they too rewarding, or too punishing?"))
 
 
     ))
