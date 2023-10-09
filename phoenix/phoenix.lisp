@@ -18,13 +18,8 @@
     (to be renamed)))
 
 (defun plan ()
-  '(overview ((build market and sell (matrix) by Oct 1)
-              (use the money to either go to Florida and the Portland)
-              (more money may (probably will) be procured in Florida))
-
-    steps ((learn opengl)
-           (learn voxel engines)
-           (in-game-voxel-code editing))))
+  '(overview ((launch kickstarter by Oct 15)
+              (ask YC for cash again))))
 
 (defun strategies ()
   '(((when I feel defeated about the complexity of things) . ((meditate to rise above them)
