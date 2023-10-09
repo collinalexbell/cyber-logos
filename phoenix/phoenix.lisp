@@ -96,7 +96,6 @@
        (git-commit))
      (with-subtasks (improve phoenix infode)
        (git-commit))
-     (tweet)
      ;; do medium wave oncomplete hook
      (bow to the short-wave))))
 
@@ -143,7 +142,10 @@
   ;; run once per time of day
   (add-tasks (cond
                ((eq time :afternoon) '((run)))
-               ((eq time :wake-up) '((make-coffee) (clean) (if weekday (apply for job))))
+               ((eq time :wake-up) '((make-coffee)
+                                     (clean)
+                                     (if weekday (apply for job))
+                                     (tweet)))
                ((eq time :evening) '((shower)))
                ((eq time :bedtime)'((sleep) ((brush) (floss))))))
   (setf time-of-day-tasks-complete (cons time time-of-day-tasks-complete)))
