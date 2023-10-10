@@ -80,9 +80,8 @@
 
 (defun short-wave-tasks ()
   (reverse
-   '((meditate)
-     (get coffee or tea)
-     (spiritual reading)
+   '((get coffee or tea)
+     ((meditate) and (spiritual listening))
      (gamedesign reading)
      (with-subtasks (improve game design)
        (git-commit))
