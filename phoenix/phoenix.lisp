@@ -76,6 +76,10 @@
 
 (defun wake () (runnable-time-of-day-tasks))
 
+(defun flow-wave ()
+  (add-tasks
+   '((meditate)
+     (work))))
 
 
 (defun short-wave-tasks ()
