@@ -78,7 +78,8 @@
 
 (defun flow-wave ()
   (add-tasks
-   '((meditate)
+   '((game-design)
+     (meditate)
      (work))))
 
 
