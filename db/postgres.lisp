@@ -3,7 +3,7 @@
 (ql:quickload :cl-ppcre)
 
 (defpackage :logos.db.postgres
-  (:use :cl :postmodern :cl-json :uiop)
+  (:use :cl :postmodern :uiop)
   (:export :connect-with-config))
 
 (in-package :logos.db.postgres)
