@@ -78,7 +78,8 @@
 
 (defun flow-wave ()
   (add-tasks
-   '((game-design)
+   '((coffee)
+     (game-design)
      (meditate)
      (work))))
 
@@ -92,8 +93,6 @@
        (git-commit))
      (technical reading)
      (with-subtasks (improve matrix infode)
-       (git-commit))
-     (with-subtasks (improve phoenix infode)
        (git-commit))
      ;; do medium wave oncomplete hook
      (bow to the short-wave))))
