@@ -51,6 +51,29 @@
       (pzmq:send socket (api-create-app app x y z))
       (pzmq:recv-string socket :dontwait t))))
 
+(defun tron-plot (socket &optional (offset-x 0) (offset-y 0) (offset-z 0) (material 0))
+  (labels ((add-cube+* (x y z mat) (add-cube* (+ x offset-x) (+ y offset-y) (+ z offset-z) mat)))
+   (loop for z from -10 to 10
+         do (progn
+              (pzmq:send
+               socket
+               (format nil "~{~A~^~%~}"
+                       (alexandria:flatten
+                        (list
+                         (loop for i from -40 to -6 collect (add-cube+* i -5 z 3))
+                         (loop for i from 6 to 40 collect (add-cube+* i -5 z 3))))))
+              (pzmq:recv-string socket)))
+   (loop for i from -40 to 40
+         do (progn
+              (pzmq:send
+               socket
+               (format nil "~{~A~^~%~}"
+                       (alexandria:flatten
+                        (list
+                         (loop for z from -40 to -10 collect (add-cube+* i -5 z 3))
+                         (loop for z from 10 to 40 collect (add-cube+* i -5 z 3))))))
+              (pzmq:recv-string socket)))))
+
 (defun tron-home (socket &optional (offset-x 0) (offset-y 0) (offset-z 0) (material 0))
   (labels ((add-cube+* (x y z mat) (add-cube* (+ x offset-x) (+ y offset-y) (+ z offset-z) mat)))
    (loop for z from -10 to 10
@@ -70,32 +93,12 @@
               (pzmq:recv-string socket)))))
 
 (defun tron-env (&optional (offset-x 0) (offset-y 0) (offset-z 0) (material 0))
-  (labels ((add-cube+* (x y z mat) (add-cube* (+ x offset-x) (+ y offset-y) (+ z offset-z) mat)))
     (pzmq:with-socket socket :req
       (pzmq:connect socket "tcp://localhost:5555")
       (tron-home socket offset-x offset-y offset-z material)
       (tron-home socket (+ offset-x -33) offset-y (- offset-z 15) material)
       (tron-home socket (+ offset-x 33) offset-y (- offset-z 15) material)
-      (loop for z from -10 to 10
-            do (progn
-                 (pzmq:send
-                  socket
-                  (format nil "~{~A~^~%~}"
-                          (alexandria:flatten
-                           (list
-                            (loop for i from -40 to -6 collect (add-cube+* i -5 z 3))
-                            (loop for i from 6 to 40 collect (add-cube+* i -5 z 3))))))
-                 (pzmq:recv-string socket)))
-      (loop for i from -40 to 40
-            do (progn
-                 (pzmq:send
-                  socket
-                  (format nil "~{~A~^~%~}"
-                          (alexandria:flatten
-                           (list
-                            (loop for z from -40 to -10 collect (add-cube+* i -5 z 3))
-                            (loop for z from 10 to 40 collect (add-cube+* i -5 z 3))))))
-                 (pzmq:recv-string socket))))))
+      (tron-plot socket offset-x offset-y offset-z material)))
 
 
 (defun digital-seal-of-solomon ()
