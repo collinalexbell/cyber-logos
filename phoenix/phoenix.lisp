@@ -92,11 +92,13 @@
      (gamedesign reading)
      (with-subtasks (improve game design)
        (git-commit))
+     (improve kickstarter)
      (technical reading)
      (with-subtasks (improve matrix infode)
        (git-commit))
      ;; do medium wave oncomplete hook
-     (bow to the short-wave))))
+     (bow to the short-wave)
+     (look at Portland))))
 
 (defun add-medatadata (task interval-insert for)
   `(,@task
