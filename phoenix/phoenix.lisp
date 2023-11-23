@@ -87,6 +87,7 @@
 (defun short-wave-tasks ()
   (reverse
    '((get coffee or tea)
+     ((drink coffee) and (look at Portland))
      ((spiritual listening)
       (meditate))
      (gamedesign reading)
@@ -98,7 +99,7 @@
        (git-commit))
      ;; do medium wave oncomplete hook
      (bow to the short-wave)
-     (look at Portland))))
+     )))
 
 (defun add-medatadata (task interval-insert for)
   `(,@task
