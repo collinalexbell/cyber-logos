@@ -94,7 +94,6 @@
      (with-subtasks (improve game design)
        (git-commit))
      (improve kickstarter)
-     (technical reading)
      (with-subtasks (improve matrix infode)
        (git-commit))
      ;; do medium wave oncomplete hook
