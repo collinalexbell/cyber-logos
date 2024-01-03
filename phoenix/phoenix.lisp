@@ -88,6 +88,7 @@
   (reverse
    '((get coffee or tea)
      ((drink coffee) and (look at Portland))
+     (run through what I love about the game)
      ((spiritual listening)
       (meditate))
      (gamedesign reading)
