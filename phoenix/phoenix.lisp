@@ -87,7 +87,7 @@
 (defun short-wave-tasks ()
   (reverse
    '((get coffee or tea)
-     ((drink coffee) and (look at Portland))
+     ((drink coffee) and (look at New York))
      (run through what I love about the game)
      ((spiritual listening)
       (meditate))
