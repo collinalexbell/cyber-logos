@@ -33,7 +33,7 @@
 
 (defvar short-wave-count 0)
 
-(defparameter short-waves-per-day 10)
+(defparameter short-waves-per-day 5)
 
 (defun long-wave ()
   ;; might be useful to use the long-wave
@@ -81,7 +81,8 @@
    '((coffee)
      (game-design)
      (meditate)
-     (work))))
+     (work)
+     (non-sleep deep rest (15 mins)))))
 
 
 (defun short-wave-tasks ()
