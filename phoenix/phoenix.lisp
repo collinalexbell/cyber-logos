@@ -78,7 +78,8 @@
 
 (defun flow-wave ()
   (add-tasks
-   '((coffee)
+   '((start asot)
+     (coffee)
      (game-design)
      (meditate)
      (work)
@@ -88,9 +89,9 @@
 (defun short-wave-tasks ()
   (reverse
    '((get coffee or tea)
-     ((drink coffee) and (look at New York))
      (run through what I love about the game)
      ((visualization) (meditate))
+     ((drink coffee) and (look at New York))
      (gamedesign reading)
      (with-subtasks (improve game design)
        (git-commit))
