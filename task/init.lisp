@@ -6,7 +6,7 @@
 (defpackage :logos.task
   (:use :cl :postmodern :logos)
   (:export
-   :task :select :complete :deselect
+   :task :select :complete :deselect :next
    :select-task :find-task
    :delete-selected
    :add-task :tasks :*selected-task* :*root-task*

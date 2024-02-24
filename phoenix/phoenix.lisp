@@ -87,7 +87,9 @@
 
 (defun meditate-and-imagine-short-wave-tasks ()
   (reverse
-   '((meditate)
+   '((drink coffee)
+     (look at matrix docs)
+     (meditate)
      (imagine))))
 
 (defun standard-short-wave-tasks ()
