@@ -85,8 +85,12 @@
      (work)
      (non-sleep deep rest (15 mins)))))
 
+(defun meditate-and-imagine-short-wave-tasks ()
+  (reverse
+   '((meditate)
+     (imagine))))
 
-(defun short-wave-tasks ()
+(defun standard-short-wave-tasks ()
   (reverse
    '((get coffee or tea)
      (run through what I love about the game)
@@ -100,6 +104,10 @@
      ;; do medium wave oncomplete hook
      (bow to the short-wave)
      )))
+
+(defun short-wave-tasks ()
+  ;(standard-short-wave-tasks)
+  (meditate-and-imagine-short-wave-tasks))
 
 (defun add-medatadata (task interval-insert for)
   `(,@task
