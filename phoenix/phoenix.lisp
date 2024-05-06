@@ -109,8 +109,9 @@
      )))
 
 (defun short-wave-tasks ()
-  ;(standard-short-wave-tasks)
-  (meditate-and-imagine-short-wave-tasks))
+  (standard-short-wave-tasks)
+ ;(meditate-and-imagine-short-wave-tasks)
+  )
 
 (defun add-medatadata (task interval-insert for)
   `(,@task
