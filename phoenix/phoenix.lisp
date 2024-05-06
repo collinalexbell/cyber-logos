@@ -98,6 +98,7 @@
      (run through what I love about the game)
      ((visualization) (meditate))
      ((drink coffee) and (look at New York))
+     (apply for a job)
      (with-subtasks (improve game design)
        (open game design card deck)
        (git-commit))
